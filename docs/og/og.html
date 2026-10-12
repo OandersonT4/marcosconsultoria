@@ -1,0 +1,21 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../assets/mr.css">
+<style>
+html,body{margin:0;width:1200px;height:630px;overflow:hidden}
+body{background:radial-gradient(900px 500px at 85% 0%,rgba(176,141,87,.22),transparent 62%),radial-gradient(700px 420px at 0% 100%,rgba(91,43,54,.4),transparent 70%),#16302B;color:#F3EEE4;font-family:var(--f-body);position:relative}
+.bg{position:absolute;right:-30px;bottom:-150px;font-family:var(--f-display);font-size:560px;line-height:1;letter-spacing:-.06em;color:rgba(243,238,228,.04)}
+.in{position:absolute;inset:72px 80px;display:flex;flex-direction:column;justify-content:space-between}
+.mark{font-size:2.2rem}
+h1{font-size:112px;line-height:.92;margin-top:28px}
+h1 em{font-style:normal;color:#D2B582}
+.row{display:flex;align-items:center;gap:22px;font-size:28px;font-weight:600;color:#DDE3DE}
+.pill{background:#B08D57;color:#16302B;border-radius:999px;padding:12px 26px;font-weight:700}
+.eb{font-size:22px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#D2B582}
+</style></head><body><div class="bg">MR</div><div class="in" id="c"></div>
+<script>
+var q=new URLSearchParams(location.search).get("p");
+document.getElementById("c").innerHTML = q==="imersao"
+ ? '<div><span class="mark">MR</span><p class="eb" style="margin-top:34px">Imersão presencial · Nova Serrana, MG</p><h1>Gestão e<br><em>Liderança</em></h1></div><div class="row"><span class="pill">28 de novembro de 2026</span><span>Hotel Líber · 7h às 17h · Vagas limitadas</span></div>'
+ : '<div><span class="mark">MR</span><h1 style="margin-top:40px">Marcos<br><em>Rodrigues</em></h1></div><div class="row"><span class="pill">MR Gestão e Assessoria</span><span>Consultoria e treinamentos · Nova Serrana, MG</span></div>';
+</script></body></html>
