@@ -15,14 +15,17 @@ Ao mudar `mr.css` ou `mr.js`, troque o `?v=` nas páginas para o navegador não 
 |---|---|---|
 | `--pine` | #16302B | fundo principal escuro, texto forte em fundo claro |
 | `--pine-2` / `--pine-3` / `--pine-4` | #1E3D37 / #10241F / #244840 | cards escuros, rodapé, hover |
-| `--cream` / `--paper` | #F3EEE4 / #FAF7F1 | fundos claros |
+| `--cream` / `--paper` / `--white` | #F3EEE4 / #FAF7F1 / #FFFFFF | fundos e cartões (base do site) |
+| `--sage` / `--sage-lt` | #D6DDD2 / #E8EDE5 | verde-sálvia claro: seções e destaques |
+| `--rose` / `--rose-lt` | #E2CFD3 / #F3E8EA | bordô pastel: seções e destaques |
+| `--brass-dk` | #8A6B3D | dourado para texto pequeno em fundo claro (rótulos) |
 | `--brass` / `--brass-lt` | #B08D57 / #D2B582 | destaque, botões, linhas, detalhes em fundo escuro |
 | `--wine` | #5B2B36 | seção "incluso", palavras em destaque |
-| `--slate` / `--sage` | #A9B9BE / #D6DDD2 | blocos de apoio (local, citação) |
+| `--slate` | #A9B9BE | apoio |
 | `--ink` / `--ink-2` / `--muted` | #17201E / #2D3835 / #5B6662 | texto em fundo claro |
 | `--on-dark` / `--on-dark-muted` | #DDE3DE / #B9C4BF | texto em fundo escuro |
 
-Texto pine sobre brass e brass sobre pine têm contraste suficiente para botão e rótulo. Para texto corrido em fundo escuro, use `--on-dark`.
+O site é claro: creme, branco, sálvia clarinho e bordô pastel nos fundos; o verde escuro (`--pine`) fica no texto, nos botões e no rodapé; o bordô (`--wine`) nos destaques de título e números. Rótulos pequenos em dourado usam `--brass-dk`, que tem contraste suficiente em fundo claro.
 
 ## Tipografia
 
@@ -42,7 +45,7 @@ Texto pine sobre brass e brass sobre pine têm contraste suficiente para botão 
 | Classe | O que é |
 |---|---|
 | `.wrap` | largura máxima com margem lateral (16px no celular) |
-| `.section` + `--paper` `--cream` `--pine` `--wine` | faixas da página |
+| `.section` + `--white` `--paper` `--cream` `--sage` `--rose` (e `--pine` `--wine` se precisar de uma faixa escura) | faixas da página |
 | `.sec-head` | cabeçalho de seção: `.eyebrow` + `h2` + `.lede` |
 | `.eyebrow` + `.rule` | rótulo em caixa alta com o traço dourado |
 | `.grid.g-2` / `.g-3` | grades que viram uma coluna no celular |
