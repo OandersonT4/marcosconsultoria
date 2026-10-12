@@ -1,0 +1,65 @@
+name: Publicar no site
+
+# Envia o site para /var/www/marquinhos na VPS, pelo usuário deploy-marcos.
+# A chave desse usuário só consegue enviar arquivos para essa pasta (rrsync na VPS).
+# Rode sempre "simular" antes de "publicar". Nada é apagado na VPS.
+
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "simular (só mostra o que mudaria) ou publicar"
+        type: choice
+        options: [simular, publicar]
+        default: simular
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: producao
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Preparar acesso à VPS
+        env:
+          MARCOS_SSH_KEY: ${{ secrets.MARCOS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+        run: |
+          for v in MARCOS_SSH_KEY VPS_KNOWN_HOSTS VPS_HOST; do
+            if [ -z "${!v}" ]; then echo "::error::Falta o segredo $v no ambiente producao."; exit 1; fi
+          done
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$MARCOS_SSH_KEY" > ~/.ssh/marcos && chmod 600 ~/.ssh/marcos
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      - name: Enviar arquivos
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          MODO: ${{ inputs.modo }}
+        run: |
+          FLAGS="-rlz --checksum --itemize-changes --chmod=D755,F644 --exclude=.git --exclude=.github --exclude=README.md"
+          if [ "$MODO" != "publicar" ]; then FLAGS="$FLAGS --dry-run"; echo "SIMULAÇÃO: nada será enviado."; fi
+          rsync $FLAGS -e "ssh -i ~/.ssh/marcos -p ${VPS_PORT:-22} -o StrictHostKeyChecking=yes -o BatchMode=yes" ./ "deploy-marcos@$VPS_HOST:./"
+
+      - name: Conferir o site
+        if: inputs.modo == 'publicar'
+        run: |
+          for u in / /imersao/ /assets/marcos.jpg /assets/marcos-sq.jpg; do
+            c=$(curl -s -o /dev/null -w "%{http_code}" "https://marcosconsultoria.com.br$u")
+            echo "$c $u"
+            [ "$c" = "200" ] || { echo "::error::$u respondeu $c"; exit 1; }
+          done
+
+      - name: Apagar a chave do runner
+        if: always()
+        run: rm -f ~/.ssh/marcos
