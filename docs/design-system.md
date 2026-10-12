@@ -35,7 +35,7 @@ Texto pine sobre brass e brass sobre pine têm contraste suficiente para botão 
 - Espaços `--s-1` (4px) a `--s-8` (64px); `--s-9` é o respiro entre seções.
 - Cantos `--r-sm`, `--r-md`, `--r-lg` e `--r-pill`.
 - Sombras `--sh-1`, `--sh-2` e `--sh-dark`.
-- Movimento `--ease` e `--dur`. Quem pede menos movimento no aparelho vê tudo parado.
+- Movimento `--ease` e `--dur`, sempre discreto: o site é de um curso de alto valor, nada pisca nem chama atenção sozinho. Quem pede menos movimento no aparelho vê tudo parado.
 
 ## Componentes
 
@@ -47,23 +47,21 @@ Texto pine sobre brass e brass sobre pine têm contraste suficiente para botão 
 | `.eyebrow` + `.rule` | rótulo em caixa alta com o traço dourado |
 | `.grid.g-2` / `.g-3` | grades que viram uma coluna no celular |
 | `.btn` + `--brass` `--pine` `--ghost` `--wa` `--sm` `--block` | botões (`.arrow` anima a seta) |
-| `.chip` + `--dark` `--brass`, `.dot--live` | etiquetas |
+| `.chip` + `--dark` `--brass`, `.dot` | etiquetas |
 | `.card` + `--top` `--dark` `--lift`, `.ico`, `.num` | cartões |
-| `.top`, `.brand`, `.mark`, `.nav` | topo fixo com o MR e o menu de seções |
-| `.count` com `data-count` | contagem regressiva (`data-d` `data-h` `data-m` `data-s`) |
+| `.top`, `.brand`, `.mark`, `.nav`, `.top-cta`, `.menu-btn`, `.menu` | barra de navegação fixa; no celular o menu abre pelo botão de três linhas |
+| `.count` com `data-count` | contagem regressiva (`data-d` `data-h` `data-m`) |
+| `.vagas`, `.vagas-txt` com `data-vagas`, `.vagas-bar` com `data-vagas-bar` | vagas restantes e barra |
 | `.acc` | perguntas que abrem uma de cada vez |
-| `.stepper` | seletor de quantidade |
-| `.dock` | barra fixa de inscrição no celular |
-| `.wa-float` | botão flutuante do WhatsApp |
 | `.foot` | rodapé |
 | `.reveal` (`style="--i:N"` para escalonar) | entrada suave ao rolar |
 
 ## Comportamento (`mr.js`)
 
 - `data-wa="mensagem"`: o link abre o WhatsApp do Marcos com a mensagem pronta.
-- `data-checkout="individual"` e `data-checkout="grupo"`: botões de pagamento. Usam `CHECKOUT_INDIVIDUAL` e `CHECKOUT_GRUPO`; enquanto estiverem vazios, abrem o WhatsApp com a quantidade e o total.
-- `data-grupo`: a calculadora do grupo (mínimo 2 pessoas, máximo `MAX_VAGAS`), com total e economia.
-- `data-hero`: quando a pessoa passa do topo, aparece a barra `.dock` no celular; ela some na seção `#investimento`.
+- `data-checkout="individual"` e `data-checkout="grupo"`: botões de inscrição pela Eduzz. Usam `CHECKOUT_INDIVIDUAL` e `CHECKOUT_GRUPO`; enquanto estiverem vazios, abrem o WhatsApp.
+- `data-vagas` e `data-vagas-bar`: leem `/assets/vagas.json` e mostram "Restam N de 80 vagas". Com 0, a página mostra "Vagas esgotadas" e os botões viram "Entrar na lista de espera".
+- `.menu-btn`: abre e fecha o menu do celular (fecha com Esc, ao tocar num link ou ao alargar a tela).
 - `data-dias`: escreve "Faltam N dias".
 - `.nav a[href^="#"]`: marca no menu a seção que está na tela.
 

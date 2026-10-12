@@ -6,7 +6,7 @@
 <title>Imersão Gestão e Liderança · 28/11 · Nova Serrana</title>
 <meta name="description" content="Imersão presencial de Gestão e Liderança com Marcos Rodrigues, mais de 35 anos de experiência na indústria. 28 de novembro de 2026, das 7h às 17h, no Hotel Líber em Nova Serrana, MG. R$ 790 por pessoa ou R$ 740 por pessoa para 2 ou mais.">
 <meta property="og:title" content="Imersão Gestão e Liderança · 28/11/2026 · Nova Serrana, MG">
-<meta property="og:description" content="Um dia de conteúdo, troca e desenvolvimento real para quem lidera equipes. Vagas limitadas.">
+<meta property="og:description" content="Um dia de conteúdo, troca e desenvolvimento real para quem lidera equipes. 80 vagas.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://marcosconsultoria.com.br/imersao/">
 <meta property="og:image" content="https://marcosconsultoria.com.br/assets/og-imersao.png">
@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/mr.css?v=1">
+<link rel="stylesheet" href="/assets/mr.css?v=2">
 <script>document.documentElement.classList.add("js")</script>
 <style>
 /* ---------- página da imersão ---------- */
@@ -130,26 +130,18 @@
 .price{position:relative;display:grid;gap:18px;align-content:start;padding:clamp(26px,4vw,40px);border-radius:var(--r-lg);background:var(--paper);border:1px solid var(--line);transition:transform var(--dur) var(--ease),box-shadow var(--dur)}
 .price:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
 .price--best{background:var(--pine);color:var(--cream);border-color:var(--pine)}
-.price .tag{position:absolute;top:-14px;right:24px}
-.price h3{font-size:clamp(1.6rem,3vw,2rem)}
-.price .who{font-size:var(--t-sm);color:var(--muted);margin-top:-10px}
-.price--best .who{color:var(--on-dark-muted)}
+.price .per{font-size:var(--t-sm);font-weight:600;color:var(--muted);margin-top:-6px}
+.price .who{color:var(--ink-2);padding-top:18px;border-top:1px solid var(--line)}
+.price--best .per{color:var(--brass-lt)}
+.price--best .who{color:var(--on-dark);border-top-color:var(--line-soft)}
+.price .btn{margin-top:6px}
 .amount{display:flex;align-items:flex-start;gap:6px;font-family:var(--f-display);line-height:.9}
 .amount small{font-size:1.4rem;margin-top:.35em}
 .amount b{font-weight:400;font-size:clamp(4rem,9vw,5.4rem)}
-.per{font-size:var(--t-sm);font-weight:600;color:var(--muted);margin-top:-8px}
-.price--best .per{color:var(--on-dark-muted)}
-.calc{display:grid;gap:14px;padding:18px;border-radius:var(--r-md);background:rgba(243,238,228,.07);border:1px solid var(--line-soft)}
-.calc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.calc-row > span{font-weight:600}
-.price--best .stepper{background:var(--cream);border-color:transparent}
-.calc .total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:12px;border-top:1px solid var(--line-soft)}
-.calc .total b{font-family:var(--f-display);font-weight:400;font-size:1.8rem;line-height:1}
-.calc .save{font-size:var(--t-sm);color:var(--brass-lt);font-weight:600}
 .price-note{margin-top:22px;text-align:center;font-size:var(--t-sm);color:var(--muted)}
-.price-incl{margin-top:clamp(28px,4vw,40px);padding:clamp(22px,3vw,30px);border-radius:var(--r-lg);background:var(--cream);display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px 28px;align-items:center}
+.price-incl{margin-top:clamp(28px,4vw,40px);padding:clamp(22px,3vw,30px);border-radius:var(--r-lg);background:var(--paper);border:1px solid var(--line);display:grid;grid-template-columns:minmax(220px,auto) minmax(0,1fr);gap:18px 32px;align-items:center}
 .price-incl h3{font-size:1.4rem}
-@media (max-width:760px){.prices{grid-template-columns:1fr}.price--best{order:-1}.price-incl{grid-template-columns:1fr}}
+@media (max-width:760px){.prices{grid-template-columns:1fr}.price-incl{grid-template-columns:1fr}}
 
 /* quem conduz */
 .about .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,88px);align-items:center}
@@ -195,7 +187,7 @@
 }
 </style>
 </head>
-<body class="has-dock">
+<body>
 
 <header class="top">
   <div class="wrap">
@@ -207,10 +199,22 @@
       <a href="#conteudo">Conteúdo</a>
       <a href="#dia">O dia</a>
       <a href="#investimento">Investimento</a>
+      <a href="#marcos">Quem conduz</a>
       <a href="#duvidas">Dúvidas</a>
     </nav>
-    <a class="btn btn--brass btn--sm" href="#investimento">Garantir vaga</a>
+    <div class="top-cta">
+      <a class="btn btn--brass btn--sm" href="#investimento">Inscrever-se</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span></button>
+    </div>
   </div>
+  <nav class="menu" id="menu" aria-label="Menu">
+    <a href="#conteudo">Conteúdo</a>
+    <a href="#dia">O dia</a>
+    <a href="#investimento">Investimento</a>
+    <a href="#marcos">Quem conduz</a>
+    <a href="#duvidas">Dúvidas</a>
+    <a class="btn btn--brass" href="#investimento">Inscrever-se</a>
+  </nav>
 </header>
 
 <main id="inicio">
@@ -224,13 +228,13 @@
         <p class="lede">Para quem está à frente de uma equipe e quer conduzir pessoas, organizar processos e tomar decisões com mais clareza, preparo e segurança.</p>
         <div class="hero-cta">
           <a class="btn btn--brass" href="#investimento">
-            Quero garantir minha vaga
+            Quero me inscrever
             <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
           <a class="btn btn--ghost" href="#conteudo">Ver o conteúdo</a>
         </div>
         <ul class="chips hero-chips" aria-label="Destaques">
-          <li class="chip chip--dark"><span class="dot dot--live" aria-hidden="true"></span>Vagas limitadas</li>
+          <li class="chip chip--dark"><span class="dot" aria-hidden="true"></span>80 vagas</li>
           <li class="chip chip--dark">Com Marcos Rodrigues · 35+ anos de indústria</li>
         </ul>
       </div>
@@ -245,6 +249,7 @@
         <dl>
           <div><dt>Local</dt><dd>Salão Diamante · Hotel Líber<br>Nova Serrana, MG</dd></div>
           <div><dt>Investimento</dt><dd class="from"><b>R$ 790</b><small>ou R$ 740 por pessoa para 2 ou mais</small></dd></div>
+          <div><dt>Vagas</dt><dd class="vagas"><span class="vagas-txt" data-vagas>80 vagas</span><span class="vagas-bar" data-vagas-bar aria-hidden="true"></span></dd></div>
         </dl>
         <div class="ticket-btn"><a class="btn btn--pine btn--block" href="#investimento">Ver formas de inscrição</a></div>
       </aside>
@@ -259,7 +264,6 @@
         <div><b data-d>--</b><span>dias</span></div>
         <div><b data-h>--</b><span>horas</span></div>
         <div><b data-m>--</b><span>min</span></div>
-        <div><b data-s>--</b><span>seg</span></div>
       </div>
     </div>
   </div>
@@ -453,42 +457,26 @@
       </div>
       <div class="prices">
         <article class="price reveal" style="--i:0">
-          <h3>Individual</h3>
-          <p class="who">Para você garantir a sua vaga</p>
+          <p class="eyebrow">Individual</p>
           <div class="amount" aria-label="790 reais"><small>R$</small><b>790</b></div>
           <p class="per">por pessoa</p>
-          <a class="btn btn--pine btn--block" data-checkout="individual" href="#investimento">
-            Garantir minha vaga
-            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          <p class="who">Para quem vai garantir a própria vaga.</p>
+          <a class="btn btn--pine btn--block" data-checkout="individual" href="#investimento">Inscrever-me <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
 
         <article class="price price--best reveal" style="--i:1">
-          <span class="chip chip--brass tag">Economize R$ 50 por pessoa</span>
-          <h3>Grupo</h3>
-          <p class="who">2 ou mais pessoas, ideal para levar a equipe</p>
+          <p class="eyebrow">Grupo · 2 ou mais pessoas</p>
           <div class="amount" aria-label="740 reais"><small>R$</small><b>740</b></div>
-          <p class="per">por pessoa</p>
-          <div class="calc" data-grupo>
-            <div class="calc-row">
-              <span id="qtd-label">Quantas pessoas?</span>
-              <div class="stepper" role="group" aria-labelledby="qtd-label">
-                <button type="button" data-menos aria-label="Uma pessoa a menos">−</button>
-                <output aria-live="polite">2</output>
-                <button type="button" data-mais aria-label="Uma pessoa a mais">+</button>
-              </div>
-            </div>
-            <div class="total"><span>Total</span><b data-total>R$ 1.480</b></div>
-            <span class="save">Economia de <span data-economia>R$ 100</span> no grupo</span>
-          </div>
-          <a class="btn btn--brass btn--block" data-checkout="grupo" href="#investimento">
-            <span data-txt>Garantir 2 vagas</span>
-            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          <p class="per">por pessoa · R$ 50 a menos para cada participante</p>
+          <p class="who">Para a empresa que vai levar a equipe. Um grupo de 3, por exemplo, sai por R$ 2.220.</p>
+          <a class="btn btn--brass btn--block" data-checkout="grupo" href="#investimento">Inscrever um grupo <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
       </div>
       <div class="price-incl reveal">
-        <h3>Nos dois valores</h3>
+        <div>
+          <h3>Nos dois valores</h3>
+          <div class="vagas" style="margin-top:14px"><span class="vagas-txt" data-vagas>80 vagas</span><div class="vagas-bar" data-vagas-bar aria-hidden="true"></div></div>
+        </div>
         <ul class="chips">
           <li class="chip">Dia inteiro presencial</li>
           <li class="chip">Coffee break manhã e tarde</li>
@@ -498,12 +486,12 @@
           <li class="chip">Imersão gravada</li>
         </ul>
       </div>
-      <p class="price-note">Pagamento processado com segurança pela Eduzz. Para grupos maiores, <a data-wa="Olá! Quero inscrever um grupo grande da minha empresa na Imersão Gestão e Liderança do dia 28/11." href="#">fale com a equipe no WhatsApp</a>.</p>
+      <p class="price-note">Inscrição e pagamento pela Eduzz, com confirmação por e-mail. Dúvidas sobre grupos? <a data-wa="Olá! Tenho uma dúvida sobre inscrição em grupo na Imersão Gestão e Liderança do dia 28/11." href="#">Fale com a equipe</a>.</p>
     </div>
   </section>
 
   <!-- QUEM CONDUZ -->
-  <section class="section section--paper about">
+  <section class="section section--paper about" id="marcos">
     <div class="wrap">
       <div class="badge-card reveal">
         <span class="n">35+</span>
@@ -549,12 +537,16 @@
           <p class="ans">R$ 790 por pessoa na inscrição individual. Para 2 ou mais pessoas, cada uma paga R$ 740: um grupo de 3, por exemplo, sai por R$ 2.220.</p>
         </details>
         <details>
+          <summary>Quantas vagas são?</summary>
+          <p class="ans">80 vagas, limitadas ao espaço do salão. O número de vagas restantes aparece nesta página e é atualizado conforme as inscrições são confirmadas.</p>
+        </details>
+        <details>
           <summary>O que está incluso na inscrição?</summary>
           <p class="ans">O dia inteiro de imersão presencial, coffee break matutino e vespertino, almoço completo, apostila de estudo, 1 hora de consultoria individual com o Marcos e acesso à imersão gravada, 100% online.</p>
         </details>
         <details>
           <summary>Como faço minha inscrição?</summary>
-          <p class="ans">Escolha individual ou grupo na seção Investimento. Você vai para a página de pagamento segura da Eduzz, escolhe a forma de pagamento e recebe a confirmação por e-mail.</p>
+          <p class="ans">Escolha individual ou grupo na seção Investimento. A inscrição e o pagamento são feitos na Eduzz, plataforma segura de pagamento, e a confirmação chega por e-mail.</p>
         </details>
         <details>
           <summary>Como funciona a consultoria individual?</summary>
@@ -566,7 +558,7 @@
         </details>
         <details>
           <summary>Minha empresa pode inscrever mais de uma pessoa?</summary>
-          <p class="ans">Pode, e sai mais em conta: a partir de 2 pessoas, cada uma paga R$ 740. Para grupos maiores, fale com a equipe pelo WhatsApp.</p>
+          <p class="ans">Pode, e sai mais em conta: a partir de 2 pessoas, cada uma paga R$ 740. Use a opção Grupo na seção Investimento. Se tiver dúvida sobre a inscrição do grupo, fale com a equipe pelo WhatsApp.</p>
         </details>
       </div>
     </div>
@@ -575,15 +567,16 @@
   <!-- CHAMADA FINAL -->
   <section class="section section--pine final">
     <div class="wrap">
-      <h2 class="reveal">Invista em você.<br><span class="accent">Vagas limitadas.</span></h2>
+      <h2 class="reveal">Invista em você.<br><span class="accent">80 vagas.</span></h2>
       <div class="final-box reveal">
         <p class="muted">28 de novembro de 2026 · Hotel Líber · Nova Serrana, MG. Garanta seu lugar enquanto ainda há vagas no salão.</p>
+        <div class="vagas"><span class="vagas-txt" data-vagas>80 vagas</span><div class="vagas-bar" data-vagas-bar aria-hidden="true"></div></div>
         <div class="recap">
           <div><small>Individual</small><b>R$ 790</b></div>
           <div><small>Grupo · por pessoa</small><b>R$ 740</b></div>
         </div>
         <a class="btn btn--brass" href="#investimento">
-          Garantir minha vaga
+          Escolher minha inscrição
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -605,19 +598,12 @@
   </div>
 </footer>
 
-<div class="dock" aria-label="Inscrição rápida">
-  <div><small>Imersão · 28/11 · a partir de</small><b>R$ 740</b></div>
-  <a class="btn btn--brass" href="#investimento">Garantir vaga</a>
-</div>
 
-<a class="wa-float" data-wa="Olá! Quero saber mais sobre a Imersão Gestão e Liderança do dia 28/11." href="#" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
-</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-wa" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></symbol>
 </svg>
 
-<script src="/assets/mr.js?v=1"></script>
+<script src="/assets/mr.js?v=2"></script>
 </body>
 </html>

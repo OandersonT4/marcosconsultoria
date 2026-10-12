@@ -15,7 +15,17 @@ Repositório público: não coloque senhas, chaves ou dados de clientes aqui.
 - Individual: **R$ 790**.
 - Grupo, 2 ou mais pessoas: **R$ 740 por pessoa**.
 
-Os valores ficam em `assets/mr.js` (`PRECO_INDIVIDUAL` e `PRECO_GRUPO`) e também escritos nos textos de `imersao/index.html` (topo, investimento, dúvidas e chamada final). Ao mudar o preço, mude nos dois lugares.
+Os valores estão escritos em `imersao/index.html` (topo, investimento, dúvidas e chamada final), nas mensagens do WhatsApp em `assets/mr.js` e nos produtos da Eduzz. Ao mudar o preço, mude nos três lugares.
+
+## Vagas
+
+São 80. O que já foi vendido fica em `assets/vagas.json`:
+
+```json
+{"total": 80, "vendidas": 0}
+```
+
+Conforme as vendas confirmadas na Eduzz, aumente `vendidas` e publique (simular, depois publicar). A página lê esse arquivo sem cache, então o número muda na hora para quem abrir. Com `vendidas` igual a `total`, a página mostra "Vagas esgotadas" e os botões passam a oferecer a lista de espera pelo WhatsApp.
 
 ## Eduzz
 
