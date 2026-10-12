@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Curso Gestão e Liderança</title>
+
+
+<meta name="description" content="Curso presencial de Gestão e Liderança com Marcos Rodrigues, mais de 35 anos de experiência na indústria. 28 de novembro de 2026, das 7h às 17h, no Hotel Líber em Nova Serrana, MG. Coffee break, almoço, apostila, consultoria individual e curso gravado inclusos.">
+<meta property="og:title" content="Curso Gestão e Liderança · 28/11/2026 · Nova Serrana, MG">
+<meta property="og:description" content="Um dia de conteúdo, troca e desenvolvimento real para quem lidera equipes. Vagas limitadas.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://marcosconsultoria.com.br/assets/marcos.jpg">
+<meta name="theme-color" content="#16302B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2316302B'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' fill='%23F3EEE4' text-anchor='middle'%3EMR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: editorial event poster — pine-green hero with the date set like a print invitation, then alternating cream / pine / wine bands lifted from the MR carousel palette. Single brand look (not theme-switching). */
+:root{
+  color-scheme: light;
+  --pine:#16302B;      /* primary ground, carousel slide 1 */
+  --pine-2:#1E3D37;
+  --cream:#F3EEE4;     /* paper */
+  --paper:#FAF7F1;
+  --brass:#B08D57;     /* rules + accent */
+  --brass-lt:#D2B582;
+  --wine:#5B2B36;      /* carousel slide 4 */
+  --slate:#A9B9BE;     /* carousel slide 3 */
+  --sage:#D6DDD2;      /* carousel slide 5 */
+  --ink:#17201E;
+  --muted:#5B6662;
+  --on-dark-muted:#B9C4BF;
+  --f-display:"Gloock", "Georgia", "Times New Roman", serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --gutter:clamp(16px, 5vw, 56px);
+  --max:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.04;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.rule{width:64px;height:2px;background:var(--brass);border:0;margin:0}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:var(--f-body);font-weight:700;font-size:1rem;letter-spacing:.02em;text-decoration:none;padding:1.05em 1.8em;border-radius:999px;border:0;cursor:pointer;transition:transform .15s ease, background .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-brass{background:var(--brass);color:var(--pine)}
+.btn-brass:hover{background:var(--brass-lt)}
+.btn-pine{background:var(--pine);color:var(--cream)}
+.btn-pine:hover{background:var(--pine-2)}
+.btn svg{width:1.1em;height:1.1em}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(22,48,43,.94);backdrop-filter:blur(8px);color:var(--cream);border-bottom:1px solid rgba(176,141,87,.25)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mark{font-family:var(--f-display);font-size:1.35rem;line-height:1;background:var(--cream);color:var(--pine);padding:.32em .4em .26em;border-radius:3px;letter-spacing:-.04em}
+.brand small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-muted)}
+.brand strong{display:block;font-weight:600;font-size:.95rem;line-height:1.2}
+.top .btn{padding:.7em 1.3em;font-size:.9rem;white-space:nowrap}
+
+/* Hero */
+.hero{background:var(--pine);color:var(--cream);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1200px 500px at 85% 10%, rgba(176,141,87,.14), transparent 60%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:clamp(28px,5vw,72px);align-items:end;padding-block:clamp(48px,8vw,96px) 0}
+.hero-copy{padding-bottom:clamp(40px,7vw,88px);min-width:0}
+.hero .eyebrow{color:var(--brass-lt);margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.hero h1{font-size:clamp(3.4rem,10vw,7.4rem);line-height:.94}
+.hero h1 span{display:block}
+.hero .lede{margin-top:26px;max-width:34ch;font-size:clamp(1.05rem,1.6vw,1.22rem);color:#DDE3DE}
+.date-card{margin-top:34px;display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:center;border-top:1px solid rgba(176,141,87,.6);border-bottom:1px solid rgba(176,141,87,.6);padding-block:20px;max-width:520px}
+.date-card .day{font-family:var(--f-display);font-size:clamp(4rem,9vw,5.6rem);line-height:.85;grid-row:span 2}
+.date-card .month{font-family:var(--f-display);font-size:clamp(1.5rem,3vw,2rem);line-height:1.05}
+.date-card .meta{font-size:.95rem;color:var(--on-dark-muted)}
+.hero-cta{margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.scarcity{font-size:.92rem;color:var(--on-dark-muted);display:flex;align-items:center;gap:8px}
+.scarcity i{width:8px;height:8px;border-radius:50%;background:var(--brass-lt);box-shadow:0 0 0 4px rgba(210,181,130,.2)}
+.hero-photo{align-self:end;position:relative;min-width:0}
+.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;border-radius:200px 200px 0 0;filter:saturate(.92)}
+.hero-photo figcaption{position:absolute;left:-18px;bottom:28px;background:var(--cream);color:var(--pine);padding:12px 16px;border-radius:4px;font-size:.85rem;line-height:1.3;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.hero-photo figcaption b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.15rem}
+
+/* Countdown strip */
+.strip{background:var(--brass);color:var(--pine)}
+.strip .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 28px;padding-block:16px}
+.strip .eyebrow{letter-spacing:.16em}
+.count{display:flex;gap:18px;font-variant-numeric:tabular-nums}
+.count div{display:flex;align-items:baseline;gap:5px}
+.count b{font-family:var(--f-display);font-weight:400;font-size:1.9rem;line-height:1}
+.count span{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+
+/* Sections */
+section{padding-block:clamp(64px,9vw,120px)}
+.sec-head{display:grid;gap:18px;max-width:760px;margin-bottom:clamp(36px,5vw,56px)}
+.sec-head h2{font-size:clamp(2.3rem,5.2vw,3.8rem)}
+.sec-head p{font-size:1.1rem;color:var(--muted);max-width:60ch}
+
+/* Pain */
+.pain{background:var(--paper)}
+.pain .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:start}
+.pain h2{font-size:clamp(2.2rem,4.8vw,3.6rem)}
+.pain h2 em{font-style:normal;color:var(--wine)}
+.pain-text{display:grid;gap:20px;font-size:1.1rem;color:#2D3835;min-width:0}
+.tension{list-style:none;padding:0;margin:8px 0 0;display:grid;border-top:1px solid #D8D2C4}
+.tension li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid #D8D2C4}
+.tension li span{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);min-width:7.5em}
+.pull{margin-top:12px;padding:22px 24px;background:var(--sage);border-radius:4px;font-family:var(--f-display);font-size:1.45rem;line-height:1.25;color:var(--pine)}
+
+/* Audience */
+.who{background:var(--cream)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,28px)}
+.who-card{background:var(--paper);padding:28px 26px;border-radius:4px;display:grid;gap:10px;align-content:start;border-top:3px solid var(--pine)}
+.who-card h3{font-size:1.55rem}
+.who-card p{color:var(--muted);font-size:1rem}
+
+/* Topics */
+.topics{background:var(--pine);color:var(--cream)}
+.topics .sec-head p{color:var(--on-dark-muted)}
+.topics .eyebrow{color:var(--brass-lt)}
+.topic-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(28px,5vw,72px);border-top:1px solid rgba(176,141,87,.45)}
+.topic{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:26px 0;border-bottom:1px solid rgba(176,141,87,.45)}
+.topic svg{width:40px;height:40px;stroke:var(--brass-lt);fill:none;stroke-width:1.5}
+.topic h3{font-size:1.6rem;margin-bottom:8px}
+.topic p{color:var(--on-dark-muted);font-size:1rem}
+
+/* Priorities */
+.priorities{margin-top:clamp(40px,6vw,64px);padding:clamp(24px,4vw,40px);background:var(--pine-2);border-radius:4px;border:1px solid rgba(176,141,87,.35)}
+.priorities .eyebrow{color:var(--brass-lt);margin-bottom:20px}
+.priorities ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.priorities li{font-family:var(--f-display);font-size:clamp(1.3rem,2.4vw,1.9rem);display:grid;gap:6px;padding-top:14px;border-top:2px solid var(--brass)}
+.priorities li b{font-family:var(--f-body);font-size:.8rem;font-weight:700;color:var(--brass-lt);letter-spacing:.1em}
+.pri-note{margin-top:22px;color:var(--on-dark-muted);max-width:62ch}
+.quote{margin:8px 0 0;padding-left:20px;border-left:2px solid var(--brass);font-family:var(--f-display);font-size:1.4rem;line-height:1.3;color:var(--pine)}
+.quote cite{display:block;margin-top:10px;font-family:var(--f-body);font-style:normal;font-size:.85rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Day timeline */
+.agenda{background:var(--paper)}
+.timeline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:15px;height:2px;background:var(--brass)}
+.timeline li{position:relative;padding-top:44px;padding-right:12px;min-width:0}
+.timeline li::before{content:"";position:absolute;top:8px;left:0;width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--pine)}
+.timeline li.edge::before{background:var(--pine)}
+.timeline .t{font-family:var(--f-display);font-size:1.6rem;line-height:1;color:var(--pine)}
+.timeline .d{margin-top:8px;font-size:.95rem;color:var(--muted);line-height:1.4}
+.place{margin-top:clamp(40px,6vw,64px);display:grid;grid-template-columns:1.1fr 1fr;gap:0;border-radius:4px;overflow:hidden;background:var(--cream)}
+.place > div{padding:clamp(26px,4vw,44px);min-width:0}
+.place .where{background:var(--slate);color:var(--pine)}
+.place h3{font-size:clamp(2rem,4vw,2.8rem)}
+.place dl{margin:0;display:grid;gap:14px}
+.place dt{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+.place dd{margin:2px 0 0;font-size:1.1rem;font-weight:500}
+.maplink{display:inline-flex;margin-top:20px;font-weight:600;text-underline-offset:4px}
+
+/* Included */
+.incl{background:var(--wine);color:var(--cream)}
+.incl .eyebrow{color:var(--brass-lt)}
+.incl .sec-head p{color:#E2CFD3}
+.incl-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(18px,2.4vw,28px)}
+.incl-feature{background:var(--cream);color:var(--wine);border-radius:4px;padding:clamp(28px,4vw,44px);display:grid;gap:14px;align-content:start}
+.incl-feature .big{font-family:var(--f-display);font-size:clamp(4.5rem,10vw,7rem);line-height:.85}
+.incl-feature h3{font-size:clamp(1.6rem,3vw,2.1rem)}
+.incl-feature p{color:#6B4650}
+.incl-list{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid rgba(243,238,228,.28)}
+.incl-list li{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:center;padding:20px 0;border-bottom:1px solid rgba(243,238,228,.28)}
+.incl-list svg{width:30px;height:30px;stroke:var(--brass-lt);fill:none;stroke-width:1.6}
+.incl-list b{display:block;font-weight:600;font-size:1.08rem}
+.incl-list small{color:#E2CFD3;font-size:.92rem}
+
+/* About */
+.about{background:var(--cream)}
+.about .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,6vw,88px);align-items:center}
+.about-photo{position:relative;min-width:0}
+.about-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 8%;border-radius:4px}
+.about-photo::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1.5px solid var(--brass);border-radius:4px;z-index:-1}
+.about-photo{isolation:isolate}
+.about-text{display:grid;gap:18px;min-width:0}
+.about-text h2{font-size:clamp(2.6rem,5.4vw,4rem)}
+.about-text h2 span{color:var(--brass)}
+.about-text p{font-size:1.08rem;color:#2D3835;max-width:58ch}
+.areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;padding:0;list-style:none}
+.areas li{font-size:.9rem;font-weight:500;padding:8px 14px;border:1px solid #CFC6B3;border-radius:999px;background:var(--paper)}
+.sign{font-family:var(--f-display);font-size:1.3rem;color:var(--pine)}
+
+/* FAQ */
+.faq{background:var(--paper)}
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,88px)}
+.faq-list{border-top:1px solid #D8D2C4;min-width:0}
+details{border-bottom:1px solid #D8D2C4}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 0;font-weight:600;font-size:1.1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-display);font-size:1.8rem;line-height:1;color:var(--brass);transition:transform .2s ease}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 22px;color:var(--muted);max-width:62ch}
+
+/* Final CTA */
+.final{background:var(--pine);color:var(--cream);text-align:left}
+.final .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(28px,5vw,72px);align-items:end}
+.final h2{font-size:clamp(2.8rem,7vw,5.6rem);line-height:.95}
+.final h2 span{color:var(--brass-lt)}
+.final-box{display:grid;gap:18px;justify-items:start;min-width:0}
+.final-box p{color:var(--on-dark-muted)}
+.final-box .btn{width:100%}
+
+/* Footer */
+footer{background:#10241F;color:var(--on-dark-muted);font-size:.92rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px 32px;padding-block:36px calc(36px + env(safe-area-inset-bottom,0px))}
+footer a{text-decoration:none;color:var(--cream)}
+footer a:hover{text-decoration:underline}
+footer .tag{font-style:italic;color:var(--brass-lt)}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 24px}
+
+/* Floating WhatsApp */
+.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:56px;height:56px;border-radius:50%;background:#1F8F55;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .15s ease}
+.wa:hover{transform:scale(1.06)}
+.wa svg{width:28px;height:28px}
+
+/* Entrance — visible at rest, gentle lift on load */
+@keyframes rise{from{transform:translateY(14px);opacity:.001}to{transform:none;opacity:1}}
+.hero-copy > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero-copy > *:nth-child(2){animation-delay:.08s}
+.hero-copy > *:nth-child(3){animation-delay:.16s}
+.hero-copy > *:nth-child(4){animation-delay:.24s}
+.hero-copy > *:nth-child(5){animation-delay:.32s}
+
+/* Responsive */
+@media (max-width: 960px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-photo{max-width:420px;justify-self:center;width:100%}
+  .hero-copy{padding-bottom:0}
+  .pain .wrap,.about .wrap,.faq .wrap,.final .wrap,.incl-grid,.place{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr 1fr}
+  .timeline{grid-template-columns:repeat(3,1fr);row-gap:28px}
+  .timeline::before{display:none}
+  .timeline li{border-top:2px solid var(--brass);padding-top:30px}
+  .timeline li::before{top:-9px}
+}
+@media (max-width: 640px){
+  body{font-size:16px}
+  .brand small{display:none}
+  .brand strong{display:none}
+  .hero-photo{max-width:320px}
+  .who-grid,.topic-list{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr 1fr}
+  .priorities ol{grid-template-columns:1fr 1fr 1fr}
+  .hero-photo figcaption{left:12px}
+  .count{gap:12px}
+  .count b{font-size:1.5rem}
+  .tension li{grid-template-columns:1fr;gap:4px}
+  .about-photo::after{inset:10px -8px -10px 10px}
+  .hero-cta .btn{width:100%}
+}
+</style>
+<meta property="og:url" content="https://marcosconsultoria.com.br/imersao/">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="MR Gestão e Assessoria — início">
+      <span class="mark">MR</span>
+      <span><strong>MR Gestão e Assessoria</strong><small>Curso Gestão e Liderança</small></span>
+    </a>
+    <a class="btn btn-brass js-checkout" href="#inscricao">Garantir vaga</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="rule" aria-hidden="true"></span>Curso presencial · Nova Serrana, MG</p>
+        <h1><span>Gestão e</span><span>Liderança</span></h1>
+        <p class="lede">Para quem está à frente de uma equipe e quer conduzir pessoas, organizar processos e tomar decisões com mais clareza, preparo e segurança.</p>
+        <div class="date-card">
+          <span class="day">28</span>
+          <span class="month">de novembro<br>de 2026</span>
+          <span class="meta">Sábado · 7h às 17h · Hotel Líber</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-brass js-checkout" href="#inscricao">
+            Quero garantir minha vaga
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <span class="scarcity"><i aria-hidden="true"></i>Vagas limitadas</span>
+        </div>
+      </div>
+      <figure class="hero-photo" style="margin:0">
+        <img src="../assets/marcos.jpg" alt="Marcos Rodrigues, consultor da MR Gestão e Assessoria" width="720" height="880" fetchpriority="high">
+        <figcaption><b>Marcos Rodrigues</b>Mais de 35 anos no dia a dia da indústria</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <div class="strip" aria-label="Contagem regressiva para o curso">
+    <div class="wrap">
+      <span class="eyebrow">Faltam para o curso</span>
+      <div class="count" id="count">
+        <div><b id="cd-d">--</b><span>dias</span></div>
+        <div><b id="cd-h">--</b><span>horas</span></div>
+        <div><b id="cd-m">--</b><span>min</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAIN -->
+  <section class="pain">
+    <div class="wrap">
+      <h2>Liderar não é só mandar, cobrar ou <em>resolver problema</em> o dia inteiro.</h2>
+      <div class="pain-text">
+        <p>Liderar mexe com a cabeça, com a responsabilidade e com o peso de saber que muitas decisões suas refletem no trabalho, no resultado e na vida de outras pessoas.</p>
+        <p>Quem está à frente de uma equipe vive entre três pressões ao mesmo tempo:</p>
+        <ul class="tension">
+          <li><span>Resultado</span>A cobrança por produção, prazo e meta.</li>
+          <li><span>Processo</span>Manter a rotina funcionando sem desperdício.</li>
+          <li><span>Pessoas</span>Desenvolver a equipe no meio da correria.</li>
+        </ul>
+        <p class="pull">Muitas vezes o que falta não é esforço. É direção, método e orientação prática para transformar experiência em resultado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section class="who">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" style="color:var(--brass)">Para quem é</p>
+        <h2>Feito para quem conduz gente e processo na prática</h2>
+      </div>
+      <div class="who-grid">
+        <article class="who-card">
+          <h3>Quem já lidera</h3>
+          <p>Supervisores, encarregados e gerentes que querem conduzir a equipe com mais segurança e menos desgaste.</p>
+        </article>
+        <article class="who-card">
+          <h3>Quem vai assumir</h3>
+          <p>Profissionais que estão sendo preparados para liderar e querem chegar ao cargo com método.</p>
+        </article>
+        <article class="who-card">
+          <h3>Quem é dono</h3>
+          <p>Empresários e gestores de indústria que querem processos mais organizados e líderes mais preparados.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section class="topics">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">O que você vai desenvolver</p>
+        <h2>Um dia inteiro de conteúdo aplicado à rotina</h2>
+        <p>Os temas que o Marcos trabalha há mais de 35 anos dentro das fábricas, organizados para quem precisa de resultado no dia seguinte.</p>
+      </div>
+      <div class="topic-list">
+        <div class="topic">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="13" r="5"/><circle cx="27" cy="15" r="4"/><path d="M4 33c1-6 5-10 10-10s9 4 10 10M22 24c2-2 4-3 6-3 4 0 7 3 8 9"/></svg>
+          <div><h3>Formação de líderes</h3><p>Como formar uma liderança madura: competente, experiente e com domínio técnico do que a equipe faz.</p></div>
+        </div>
+        <div class="topic">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="21" r="14"/><path d="M20 12v9l6 4"/></svg>
+          <div><h3>Gestão do tempo</h3><p>O que é importante e o que é urgente. Planejamento, padrão e organização para o líder parar de dizer que não tem tempo.</p></div>
+        </div>
+        <div class="topic">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="7" width="30" height="26" rx="2"/><path d="M5 15h30M14 15v18M24 15v18"/></svg>
+          <div><h3>Processos e produtividade</h3><p>Layout da empresa, disposição das máquinas e adequação de processos. Organização é o que permite produtividade.</p></div>
+        </div>
+        <div class="topic">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 26c4-1 7-6 12-6 4 0 5 3 9 3 3 0 5-2 7-4M6 32h28"/><path d="M10 20l3-10h14l3 10"/></svg>
+          <div><h3>Custo e desperdício</h3><p>Um modelo pode ser bonito e mesmo assim consumir matéria-prima demais. Como enxergar o desperdício e ajustar o custo.</p></div>
+        </div>
+        <div class="topic">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 30l8-8 6 5 13-14"/><path d="M26 13h7v7"/><path d="M5 35h30"/></svg>
+          <div><h3>Avaliação de resultados</h3><p>Produzir, correr e entregar não basta. Avaliar os números para corrigir a rota do processo produtivo.</p></div>
+        </div>
+        <div class="topic">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 15l16-8 16 8-16 8z"/><path d="M11 19v8c3 3 15 3 18 0v-8"/><path d="M36 15v10"/></svg>
+          <div><h3>Desenvolvimento de equipes</h3><p>Treinar o pessoal que já entrega, mas está limitado na parte técnica. Ensinar, corrigir e acompanhar.</p></div>
+        </div>
+      </div>
+      <div class="priorities">
+        <p class="eyebrow">A ordem de prioridade numa empresa, segundo o Marcos</p>
+        <ol>
+          <li><b>1</b>Pessoas</li>
+          <li><b>2</b>Processos</li>
+          <li><b>3</b>Receita</li>
+          <li><b>4</b>Custo</li>
+          <li><b>5</b>Reputação</li>
+        </ol>
+        <p class="pri-note">Receita que falta, custo errado e reputação perdida por entregar atrasado ou mal acabado: é isso que quebra uma empresa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY + PLACE -->
+  <section class="agenda" id="local">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" style="color:var(--brass)">Data, horário e local</p>
+        <h2>Como vai ser o dia 28</h2>
+        <p>Das 7h às 17h, com conteúdo, troca entre participantes e as refeições inclusas.</p>
+      </div>
+      <ol class="timeline">
+        <li class="edge"><div class="t">7h</div><div class="d">Recepção e início</div></li>
+        <li><div class="t">Manhã</div><div class="d">Conteúdo e prática</div></li>
+        <li><div class="t">Coffee</div><div class="d">Coffee break matutino</div></li>
+        <li><div class="t">Almoço</div><div class="d">Almoço completo incluso</div></li>
+        <li><div class="t">Coffee</div><div class="d">Coffee break vespertino</div></li>
+        <li class="edge"><div class="t">17h</div><div class="d">Encerramento</div></li>
+      </ol>
+      <div class="place">
+        <div class="where">
+          <p class="eyebrow" style="margin-bottom:14px">Local</p>
+          <h3>Salão Diamante</h3>
+          <p style="font-size:1.15rem;margin-top:10px">Hotel Líber · Nova Serrana, MG</p>
+          <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Hotel+L%C3%ADber+Nova+Serrana+MG" target="_blank" rel="noopener">Ver no mapa →</a>
+        </div>
+        <div>
+          <dl>
+            <div><dt>Data</dt><dd>Sábado, 28 de novembro de 2026</dd></div>
+            <div><dt>Horário</dt><dd>Das 7h às 17h</dd></div>
+            <div><dt>Formato</dt><dd>Presencial, com acesso ao curso gravado depois</dd></div>
+            <div><dt>Vagas</dt><dd>Limitadas ao espaço do salão</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUDED -->
+  <section class="incl">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Incluso na sua inscrição</p>
+        <h2>Você não leva só o conteúdo do dia</h2>
+        <p>A inscrição cobre o dia inteiro no hotel e continua depois do curso.</p>
+      </div>
+      <div class="incl-grid">
+        <div class="incl-feature">
+          <span class="big">1 hora</span>
+          <h3>de consultoria individual com o Marcos</h3>
+          <p>Um encontro só seu para levar a realidade da sua equipe e da sua operação e sair com orientação aplicada ao seu caso.</p>
+        </div>
+        <ul class="incl-list">
+          <li>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 13h18v7a7 7 0 0 1-7 7h-4a7 7 0 0 1-7-7z"/><path d="M23 15h2a3 3 0 0 1 0 6h-2M10 4c-1 2 1 3 0 5M15 4c-1 2 1 3 0 5"/></svg>
+            <span><b>Coffee break matutino e vespertino</b><small>Pausas para recarregar e trocar experiências</small></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 18h24M6 18a10 10 0 0 1 20 0M16 6v2M5 24h22"/></svg>
+            <span><b>Almoço completo</b><small>No próprio hotel, sem se preocupar com nada</small></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 5h15l5 5v17H6z"/><path d="M21 5v5h5M10 15h12M10 20h12M10 25h7"/></svg>
+            <span><b>Apostila de estudo completa</b><small>Material para consultar depois do curso</small></span>
+          </li>
+          <li>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="6" width="26" height="17" rx="2"/><path d="M13 11l6 3.5-6 3.5zM10 27h12"/></svg>
+            <span><b>Acesso ao curso gravado</b><small>Gravação disponível 100% online para rever</small></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="wrap">
+      <div class="about-photo">
+        <img src="../assets/marcos-sq.jpg" alt="Marcos Rodrigues durante uma fala sobre liderança" width="600" height="600" loading="lazy">
+      </div>
+      <div class="about-text">
+        <p class="eyebrow" style="color:var(--brass)">Quem conduz o curso</p>
+        <h2>Quem é <span>Marcos</span></h2>
+        <p>Marcos Rodrigues tem mais de 35 anos de experiência vivendo o dia a dia das empresas. Atua com gestão, assessoria e desenvolvimento de líderes no setor calçadista, ajudando indústrias a organizar processos, fortalecer equipes e melhorar resultados com aplicação prática.</p>
+        <p>À frente da MR Gestão e Assessoria, ele apoia indústrias que querem organizar melhor a operação, desenvolver líderes e transformar rotina em resultado.</p>
+        <ul class="areas" aria-label="Áreas de atuação">
+          <li>Liderança e gestão de pessoas</li>
+          <li>Processos e eficiência produtiva</li>
+          <li>Compras e organização operacional</li>
+          <li>Treinamento de equipes</li>
+          <li>Modelagem e consumo</li>
+        </ul>
+        <blockquote class="quote">“Um líder que diz que não tem tempo não tem preparo. Quem não tem tempo não tem padrão, não tem organização.”<cite>Marcos Rodrigues</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="eyebrow" style="color:var(--brass)">Dúvidas frequentes</p>
+        <h2>Antes de se inscrever</h2>
+        <p>Ficou alguma dúvida? Fale direto com a equipe pelo WhatsApp.</p>
+        <a class="btn btn-pine js-wa" href="#" style="justify-self:start">Falar no WhatsApp</a>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Quando e onde vai ser o curso?</summary>
+          <p>No sábado, 28 de novembro de 2026, das 7h às 17h, no Salão Diamante do Hotel Líber, em Nova Serrana, MG.</p>
+        </details>
+        <details>
+          <summary>O que está incluso na inscrição?</summary>
+          <p>O dia inteiro de curso presencial, coffee break matutino e vespertino, almoço completo, apostila de estudo, 1 hora de consultoria individual com o Marcos e acesso ao curso gravado, 100% online.</p>
+        </details>
+        <details>
+          <summary>Como faço minha inscrição?</summary>
+          <p>Clique em qualquer botão de inscrição desta página. Você vai para a página de pagamento segura da Eduzz, escolhe a forma de pagamento e recebe a confirmação por e-mail.</p>
+        </details>
+        <details>
+          <summary>Como funciona a consultoria individual?</summary>
+          <p>Depois do curso, você agenda 1 hora com o Marcos para tratar da realidade da sua equipe e da sua operação. Os detalhes do agendamento chegam junto com a confirmação da inscrição.</p>
+        </details>
+        <details>
+          <summary>Se eu perder alguma parte, consigo rever?</summary>
+          <p>Sim. Todos os inscritos recebem o link do curso gravado para assistir online quando quiserem.</p>
+        </details>
+        <details>
+          <summary>Minha empresa pode inscrever mais de uma pessoa?</summary>
+          <p>Pode. Para inscrever um grupo da mesma empresa, fale com a equipe pelo WhatsApp.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final" id="inscricao">
+    <div class="wrap">
+      <h2>Invista em você.<br><span>Vagas limitadas.</span></h2>
+      <div class="final-box">
+        <p>28 de novembro de 2026 · Hotel Líber · Nova Serrana, MG. Garanta seu lugar enquanto ainda há vagas no salão.</p>
+        <a class="btn btn-brass js-checkout" href="#inscricao">
+          Garantir minha vaga
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <p style="font-size:.88rem">Pagamento processado com segurança pela Eduzz.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong style="color:var(--cream)">MR Gestão e Assessoria Ltda</strong><br>
+      <span class="tag">Transformando líderes, gerando resultados</span>
+    </div>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/marquinhosconsultoria/" target="_blank" rel="noopener">@marquinhosconsultoria</a>
+      <a class="js-wa" href="#">WhatsApp (37) 99147-4586</a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa js-wa" href="#" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+/* ===== CONFIGURAÇÃO ===== */
+// Cole aqui o link do checkout da Eduzz quando o produto estiver criado.
+// Enquanto estiver vazio, os botões de inscrição abrem o WhatsApp.
+var CHECKOUT_URL = "";
+var WHATSAPP = "5537991474586";
+var EVENT_START = "2026-11-28T07:00:00-03:00";
+/* ======================== */
+
+(function(){
+  var waMsg = encodeURIComponent("Olá! Quero saber mais sobre o curso Gestão e Liderança do dia 28/11.");
+  var waEnroll = encodeURIComponent("Olá! Quero garantir minha vaga no curso Gestão e Liderança do dia 28/11.");
+  var waUrl = "https://wa.me/" + WHATSAPP + "?text=";
+  document.querySelectorAll(".js-wa").forEach(function(a){
+    a.href = waUrl + waMsg; a.target = "_blank"; a.rel = "noopener";
+  });
+  document.querySelectorAll(".js-checkout").forEach(function(a){
+    a.href = CHECKOUT_URL ? CHECKOUT_URL : waUrl + waEnroll;
+    a.target = "_blank"; a.rel = "noopener";
+  });
+
+  var end = new Date(EVENT_START).getTime();
+  var d = document.getElementById("cd-d"), h = document.getElementById("cd-h"), m = document.getElementById("cd-m");
+  function pad(n){ return n < 10 ? "0" + n : "" + n; }
+  function tick(){
+    var diff = Math.max(0, end - Date.now());
+    var mins = Math.floor(diff / 60000);
+    d.textContent = Math.floor(mins / 1440);
+    h.textContent = pad(Math.floor((mins % 1440) / 60));
+    m.textContent = pad(mins % 60);
+  }
+  tick(); setInterval(tick, 30000);
+})();
+</script>
+</body>
+</html>
