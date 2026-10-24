@@ -235,13 +235,37 @@ html.menu-aberto{overflow:hidden}
 .ficha-fechar svg{width:18px;height:18px;stroke:var(--pine);fill:none;stroke-width:2.2}
 @media (max-width:640px){.ficha-in{grid-template-columns:1fr}.ficha-foto{aspect-ratio:4/3}}
 
-/* ---------- WhatsApp fixo (todas as páginas) ---------- */
-.wa-flut{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:45;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;box-shadow:0 16px 34px -14px rgba(16,36,31,.8);transition:transform var(--dur) var(--ease)}
-.wa-flut svg{width:30px;height:30px;fill:currentColor}
-.wa-flut:hover{transform:translateY(-3px)}
-html.menu-aberto .wa-flut{display:none}
-html.rascunho .wa-flut{bottom:calc(72px + env(safe-area-inset-bottom,0px))}
-@media print{.wa-flut{display:none}}
+/* ---------- pacotes da consultoria ---------- */
+.pacotes{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:clamp(20px,3vw,36px);align-items:start}
+.servicos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.servico{position:relative;display:flex;flex-direction:column;gap:8px;padding:22px 22px 20px;border-radius:var(--r-md);background:var(--paper);border:1.5px solid var(--line);cursor:pointer;transition:border-color var(--dur) ease,background var(--dur) ease,transform var(--dur) var(--ease),box-shadow var(--dur) ease}
+.servico:hover{transform:translateY(-3px);box-shadow:var(--sh-1)}
+.servico input{position:absolute;opacity:0;pointer-events:none}
+.servico:has(input:focus-visible){outline:2px solid var(--brass);outline-offset:3px}
+.servico:has(input:checked){border-color:var(--wine);background:var(--white);box-shadow:0 0 0 3px rgba(91,43,54,.12)}
+.servico-marca{position:absolute;right:16px;top:16px;width:26px;height:26px;border-radius:50%;border:1.5px solid #CFC6B3;background:var(--white);transition:background var(--dur) ease,border-color var(--dur) ease}
+.servico:has(input:checked) .servico-marca{border-color:var(--wine);background:var(--wine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F3EEE4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat}
+.servico h3{padding-right:34px;font-size:1.35rem;line-height:1.15}
+.servico p{color:var(--muted);font-size:var(--t-sm)}
+.servico ul{display:grid;gap:6px;margin:4px 0 0;padding:0;list-style:none;font-size:var(--t-sm);color:var(--ink-2)}
+.servico li{display:flex;gap:8px}
+.servico li::before{content:"";flex:none;width:5px;height:5px;margin-top:.62em;border-radius:50%;background:var(--brass)}
+.servico .preco{margin-top:auto;padding-top:12px}
+.servico-selo{align-self:flex-start;padding:4px 10px;border-radius:var(--r-pill);background:var(--brass);color:var(--pine);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.escolha{position:sticky;top:88px;display:grid;gap:14px;padding:clamp(22px,3vw,28px);border-radius:var(--r-lg);background:var(--pine);color:var(--cream);box-shadow:var(--sh-2)}
+.escolha .eyebrow{color:var(--brass-lt)}
+.escolha-lista{display:grid;gap:8px;margin:0;padding:0;list-style:none;font-size:var(--t-sm)}
+.escolha-lista li{display:flex;justify-content:space-between;gap:12px}
+.escolha-lista li span:last-child{flex:none;color:var(--on-dark-muted)}
+.escolha-lista .muted{color:var(--on-dark-muted)}
+.escolha-total{display:grid;gap:2px;padding-top:12px;border-top:1px solid var(--line-soft)}
+.escolha-total:empty{display:none}
+.escolha-total s{color:var(--on-dark-muted);font-size:var(--t-sm)}
+.escolha-total b{font-family:var(--f-display);font-weight:400;font-size:2rem;line-height:1;color:var(--cream)}
+.escolha-total small{color:var(--brass-lt);font-weight:700;font-size:var(--t-xs)}
+.escolha .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.escolha-nota{font-size:var(--t-xs);color:var(--on-dark-muted)!important}
+@media (max-width:860px){.pacotes{grid-template-columns:1fr}.escolha{position:static}}
 
 /* ---------- logo (marca MR + nome) ---------- */
 .logo{display:inline-flex;align-items:center;gap:16px;text-decoration:none;color:var(--pine)}

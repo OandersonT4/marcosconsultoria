@@ -62,7 +62,7 @@ O site é claro: creme, branco, sálvia clarinho e bordô pastel nos fundos; o v
 | `.filtros` + `.filtro[aria-pressed]`, `.busca` | categorias e busca do catálogo |
 | `.ficha` | `<dialog>` com os detalhes do produto |
 | `.vazio` | aviso de lista vazia (catálogo em montagem ou busca sem resultado) |
-| `.wa-flut` (com `data-wa`) | botão fixo do WhatsApp no canto, em toda página |
+| `.pacotes`, `.servico` (label com checkbox), `.escolha` | montador de pacotes da consultoria, montado pelo `mr.js` |
 | `.logo` | marca MR + nome (Marcos Rodrigues · MR Gestão e Assessoria), no topo do Início |
 | `[data-rascunho]`, `.aviso-rascunho` | blocos em montagem: só aparecem com `?rascunho` no endereço |
 
@@ -75,7 +75,8 @@ O site é claro: creme, branco, sálvia clarinho e bordô pastel nos fundos; o v
 - `data-dias`: escreve "Faltam N dias".
 - `.nav a[href^="#"]`: marca no menu a seção que está na tela.
 - `data-catalogo` (com `data-destaque="N"` mostra só N), `data-filtros` e `data-busca`: catálogo lido de `/assets/produtos.json` (ver `docs/catalogo.md`). `/produtos/#id` abre a ficha do produto.
-- `?rascunho` no endereço: mostra os blocos `data-rascunho` e usa `assets/produtos-exemplo.json`.
+- `data-pacotes` (com `data-servicos`, `data-escolha-lista`, `data-escolha-total`, `data-escolha-enviar`): montador de pacotes lido de `/assets/consultoria.json` (ver `docs/consultoria.md`); `?servico=id` já marca um serviço; `data-so-com-pacotes` só aparece quando há serviços.
+- `?rascunho` no endereço: mostra os blocos `data-rascunho` e usa `assets/produtos-exemplo.json` e `assets/consultoria-exemplo.json`.
 - `--rola` (0 a 1 na primeira tela): o "MR" grande do topo desce devagar ao rolar. Parado com "reduzir movimento".
 
 ## Imagens de compartilhamento

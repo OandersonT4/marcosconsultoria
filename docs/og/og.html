@@ -1,4 +1,7 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<!-- Imagens de compartilhamento (pré-visualização do link no WhatsApp, Instagram e Facebook), 1200x630.
+     Com o site rodando localmente, abra /docs/og/og.html?p=home, produtos, consultoria ou imersao e tire um print de 1200x630.
+     Salve em assets/og.png (home) ou assets/og-<página>.png e aumente o ?v= do og:image da página. -->
 <link rel="stylesheet" href="../../assets/fontes/fontes.css">
 <link rel="stylesheet" href="../../assets/mr.css">
 <style>
@@ -15,7 +18,12 @@ h1 em{font-style:normal;color:#5B2B36}
 </style></head><body><div class="bg">MR</div><div class="in" id="c"></div>
 <script>
 var q=new URLSearchParams(location.search).get("p");
-document.getElementById("c").innerHTML = q==="imersao"
- ? '<div><span class="mark">MR</span><p class="eb" style="margin-top:34px">Imersão presencial · Nova Serrana, MG</p><h1>Gestão e<br><em>Liderança</em></h1></div><div class="row"><span class="pill">28 de novembro de 2026</span><span>Hotel Líber · 7h às 17h · 80 vagas</span></div>'
- : '<div><span class="mark">MR</span><h1 style="margin-top:40px">Marcos<br><em>Rodrigues</em></h1></div><div class="row"><span class="pill">Vende e indica</span><span>Produtos e consultoria · Nova Serrana, MG</span></div>';
+var R = '<span class="mark">MR</span>';
+var P = {
+  imersao: '<div>' + R + '<p class="eb" style="margin-top:34px">Imersão presencial · Nova Serrana, MG</p><h1>Gestão e<br><em>Liderança</em></h1></div><div class="row"><span class="pill">28 de novembro de 2026</span><span>Hotel Líber · 7h às 17h · 80 vagas</span></div>',
+  produtos: '<div>' + R + '<p class="eb" style="margin-top:34px">Catálogo · Marcos Rodrigues</p><h1>Vende e<br><em>indica.</em></h1></div><div class="row"><span class="pill">Peça pelo site</span><span>O produto já vai escrito na mensagem</span></div>',
+  consultoria: '<div>' + R + '<p class="eb" style="margin-top:34px">Consultoria para empresas</p><h1>Processos, pessoas<br><em>e resultado.</em></h1></div><div class="row"><span class="pill">Mais de 35 anos de empresa</span><span>Indústria e comércio · Nova Serrana, MG</span></div>',
+  home: '<div>' + R + '<h1 style="margin-top:40px">Marcos<br><em>Rodrigues</em></h1></div><div class="row"><span class="pill">Vende e indica</span><span>Produtos e consultoria · Nova Serrana, MG</span></div>'
+};
+document.getElementById("c").innerHTML = P[q] || P.home;
 </script></body></html>

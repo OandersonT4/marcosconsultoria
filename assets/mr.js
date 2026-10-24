@@ -10,6 +10,7 @@ var MR = {
 };
 // As vagas ficam em /assets/vagas.json ({"total": 80, "vendidas": 0}).
 // Os produtos do catálogo ficam em /assets/produtos.json (como preencher: docs/catalogo.md).
+// Os serviços (pacotes) da consultoria ficam em /assets/consultoria.json (como preencher: docs/consultoria.md).
 // Com ?rascunho no endereço, a página mostra as partes ainda em montagem e o catálogo de exemplo.
 /* ======================== */
 
@@ -175,6 +176,62 @@ var MR = {
         peloHash(); window.addEventListener("hashchange", peloHash);
       })
       .catch(function(){ produtos = []; desenhar(); });
+  }
+
+  // Pacotes da consultoria: [data-pacotes] com [data-servicos], [data-escolha-lista], [data-escolha-total], [data-escolha-enviar]
+  // /consultoria/?servico=id já marca um serviço. Sem serviços no JSON, a seção continua escondida.
+  var pac = document.querySelector("[data-pacotes]");
+  if (pac && window.fetch) {
+    var escP = function(t){ return String(t == null ? "" : t).replace(/[&<>"']/g, function(c){ return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]; }); };
+    var realP = function(v){ return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); };
+    var caixa = pac.querySelector("[data-servicos]"), listaE = pac.querySelector("[data-escolha-lista]"),
+        totalE = pac.querySelector("[data-escolha-total]"), enviar = pac.querySelector("[data-escolha-enviar]");
+    var servicos = [], descontos = [];
+    var atualizar = function(){
+      var marc = servicos.filter(function(sv){ var i = caixa.querySelector('input[value="' + sv.id + '"]'); return i && i.checked; });
+      if (!marc.length) {
+        listaE.innerHTML = '<li class="muted">Nenhum serviço marcado ainda.</li>'; totalE.innerHTML = "";
+        enviar.setAttribute("aria-disabled", "true"); enviar.href = "#"; return;
+      }
+      listaE.innerHTML = marc.map(function(sv){ return "<li><span>" + escP(sv.nome) + "</span><span>" + (typeof sv.preco === "number" ? realP(sv.preco) : "a combinar") + "</span></li>"; }).join("");
+      var comPreco = marc.filter(function(sv){ return typeof sv.preco === "number"; });
+      var soma = comPreco.reduce(function(t, sv){ return t + sv.preco; }, 0);
+      var pct = 0; descontos.forEach(function(d){ if (marc.length >= d.itens && d.porcento > pct) pct = d.porcento; });
+      var total = Math.round(soma * (100 - pct)) / 100, todos = comPreco.length === marc.length;
+      totalE.innerHTML = !comPreco.length ? "<small>Valor combinado na conversa</small>"
+        : (pct ? "<s>" + realP(soma) + "</s>" : "") + "<b>" + realP(total) + "</b>" +
+          "<small>" + (pct ? pct + "% de desconto por levar " + marc.length + " serviços" : "") + (todos ? "" : (pct ? " · " : "") + "+ os serviços a combinar") + "</small>";
+      var msg = "Olá, Marcos! Montei a minha consultoria pelo site:\n" +
+        marc.map(function(sv){ return "• " + sv.nome + (typeof sv.preco === "number" ? " (" + realP(sv.preco) + ")" : " (a combinar)"); }).join("\n") +
+        (comPreco.length ? "\nTotal: " + realP(total) + (pct ? " com " + pct + "% de desconto" : "") + (todos ? "" : " + os serviços a combinar") : "") +
+        "\nQuero conversar sobre a minha empresa.";
+      enviar.href = wa(msg); abrirFora(enviar); enviar.removeAttribute("aria-disabled");
+    };
+    fetch(rascunho ? "/assets/consultoria-exemplo.json" : "/assets/consultoria.json", { cache: "no-store" })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        servicos = (d.servicos || []).filter(function(sv){ return sv && sv.id && sv.nome && sv.ativo !== false; });
+        descontos = (d.descontos || []).filter(function(x){ return x && x.itens > 1 && x.porcento > 0; });
+        if (!servicos.length) return;
+        if (descontos.length) {
+          var lede = pac.querySelector("[data-pacotes-lede]");
+          if (lede) lede.textContent += " " + descontos.map(function(x){ return x.itens + " ou mais têm " + x.porcento + "% de desconto"; }).join("; ") + ".";
+        }
+        caixa.innerHTML = servicos.map(function(sv){
+          return '<label class="servico"><input type="checkbox" name="servico" value="' + escP(sv.id) + '"><span class="servico-marca" aria-hidden="true"></span>' +
+            (sv.destaque ? '<span class="servico-selo">Mais pedido</span>' : "") +
+            "<h3>" + escP(sv.nome) + "</h3>" + (sv.resumo ? "<p>" + escP(sv.resumo) + "</p>" : "") +
+            (sv.inclui && sv.inclui.length ? "<ul>" + sv.inclui.map(function(x){ return "<li>" + escP(x) + "</li>"; }).join("") + "</ul>" : "") +
+            (typeof sv.preco === "number" ? '<span class="preco">' + realP(sv.preco) + (sv.preco_obs ? "<small>" + escP(sv.preco_obs) + "</small>" : "") + "</span>"
+              : '<span class="preco preco--consulta">' + escP(sv.preco_obs || "Valor combinado na conversa") + "</span>") + "</label>";
+        }).join("");
+        pac.hidden = false;
+        document.querySelectorAll("[data-so-com-pacotes]").forEach(function(el){ el.hidden = false; });
+        var q = /[?&]servico=([^&#]+)/.exec(location.search);
+        if (q) { var i = caixa.querySelector('input[value="' + decodeURIComponent(q[1]).replace(/"/g, "") + '"]'); if (i) i.checked = true; }
+        caixa.addEventListener("change", atualizar); atualizar();
+      })
+      .catch(function(){});
   }
 
   // Dúvidas: abre uma de cada vez
