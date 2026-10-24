@@ -4,12 +4,13 @@ Site da MR Gestão e Assessoria (Marcos Rodrigues). HTML, CSS e JavaScript sem b
 
 - `index.html`: página inicial (desde 24/10/2026): o catálogo em primeiro lugar e a consultoria logo no topo, que leva para `/consultoria/`.
 - `produtos/`: catálogo dos produtos que o Marcos vende e indica, lido de `assets/produtos.json` (como preencher: `docs/catalogo.md`). Filtro por categoria, busca, ficha de cada produto e pedido pelo WhatsApp com o produto já escrito.
-- `consultoria/`: o que a pessoa recebe na consultoria, antes de ir para o WhatsApp. As partes que dependem do Marcos ficam prontas e escondidas; aparecem com `?rascunho` no endereço.
+- `consultoria/`: o que a pessoa recebe na consultoria, antes de ir para o WhatsApp, e o **montador de pacotes** (serviços de `assets/consultoria.json`, com desconto por combinação; como preencher: `docs/consultoria.md`). É a página onde fica o WhatsApp da consultoria. As partes que dependem do Marcos ficam prontas e escondidas; aparecem com `?rascunho` no endereço.
 - `imersao/`: página da Imersão Gestão e Liderança. **Oculta desde 24/10/2026** (a imersão não vai mais acontecer): continua no ar, mas sem link no site e com `noindex`. Preços, vagas e Eduzz abaixo ficam só como registro.
-- Botão fixo do WhatsApp (`.wa-flut`) no canto de todas as páginas, cada um com a mensagem da página. Logo (marca MR + nome, `.logo`) no topo do Início.
+- Sem botão fixo de WhatsApp (desde 24/10/2026): o site resolve a dúvida e a pessoa chega no WhatsApp já sabendo o que quer. O WhatsApp fica no pedido de cada produto, na página da consultoria e no rodapé. Logo (marca MR + nome, `.logo`) no topo do Início.
+- Pré-visualização do link (WhatsApp, Instagram, Facebook): cada página tem a sua imagem 1200x630 (`assets/og.png`, `og-produtos.png`, `og-consultoria.png`, `og-imersao.png`, montadas em `docs/og/og.html?p=`) e o bloco completo de `og:*` e `twitter:*`.
 - `assets/fontes/`: Gloock e Figtree servidas pelo próprio site (antes vinham do Google Fonts), licença em `OFL.txt`.
 - `assets/mr.css` e `assets/mr.js`: design system e comportamento comum (ver `docs/design-system.md`).
-- `assets/og*.png`: imagens que aparecem ao compartilhar o link.
+- `assets/og*.png`: imagens que aparecem ao compartilhar o link (uma por página).
 - `docs/`: documentação e modelo das imagens de compartilhamento. Não vai para a VPS.
 
 Repositório público: não coloque senhas, chaves ou dados de clientes aqui.

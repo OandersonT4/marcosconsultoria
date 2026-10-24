@@ -1,0 +1,10 @@
+{
+  "aviso": "Serviços de EXEMPLO, só para ver o montador (abra /consultoria/?rascunho). Não aparecem para o público. Os de verdade vão em consultoria.json.",
+  "servicos": [
+    {"id": "diagnostico", "nome": "[Serviço 1, ex.: diagnóstico]", "resumo": "[Uma linha sobre o serviço.]", "inclui": ["[O que inclui 1]", "[O que inclui 2]"], "preco": 1500, "destaque": true},
+    {"id": "processos", "nome": "[Serviço 2, ex.: processos]", "resumo": "[Uma linha sobre o serviço.]", "inclui": ["[O que inclui 1]", "[O que inclui 2]", "[O que inclui 3]"], "preco": 2500, "preco_obs": "por mês"},
+    {"id": "lideres", "nome": "[Serviço 3, ex.: treinamento de líderes]", "resumo": "[Uma linha sobre o serviço.]", "inclui": ["[O que inclui 1]"], "preco": 1800},
+    {"id": "acompanhamento", "nome": "[Serviço 4, sem preço no site]", "resumo": "Sem preço: aparece \"Valor combinado na conversa\".", "inclui": ["[O que inclui 1]"]}
+  ],
+  "descontos": [{"itens": 2, "porcento": 10}, {"itens": 3, "porcento": 15}]
+}
