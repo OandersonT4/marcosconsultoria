@@ -5,7 +5,7 @@ Tudo o que as páginas usam está em dois arquivos:
 - `assets/mr.css`: tokens, base e componentes.
 - `assets/mr.js`: configuração (WhatsApp, links da Eduzz, preços, data) e comportamento.
 
-Cada página só acrescenta o próprio layout num `<style>` curto. Ao criar uma página nova, carregue as fontes, o `mr.css`, o `mr.js` e coloque `<script>document.documentElement.classList.add("js")</script>` no `<head>`. Esse script liga as animações de entrada; sem ele, tudo aparece parado e visível.
+Cada página só acrescenta o próprio layout num `<style>` curto. Ao criar uma página nova, carregue as fontes (`/assets/fontes/fontes.css`, com `preload` das duas `-latin.woff2`), o `mr.css`, o `mr.js` e coloque `<script>document.documentElement.classList.add("js")</script>` no `<head>`. Esse script liga as animações de entrada; sem ele, tudo aparece parado e visível.
 
 Ao mudar `mr.css` ou `mr.js`, troque o `?v=` nas páginas para o navegador não usar a versão guardada.
 
@@ -58,6 +58,11 @@ O site é claro: creme, branco, sálvia clarinho e bordô pastel nos fundos; o v
 | `.acc` | perguntas que abrem uma de cada vez |
 | `.foot` | rodapé |
 | `.reveal` (`style="--i:N"` para escalonar) | entrada suave ao rolar |
+| `.prods`, `.prod` (`.prod-foto`, `.prod-ph`, `.prod-selo`, `.prod-corpo`, `.prod-pe`), `.preco` | cartões do catálogo, montados pelo `mr.js` |
+| `.filtros` + `.filtro[aria-pressed]`, `.busca` | categorias e busca do catálogo |
+| `.ficha` | `<dialog>` com os detalhes do produto |
+| `.vazio` | aviso de lista vazia (catálogo em montagem ou busca sem resultado) |
+| `[data-rascunho]`, `.aviso-rascunho` | blocos em montagem: só aparecem com `?rascunho` no endereço |
 
 ## Comportamento (`mr.js`)
 
@@ -67,7 +72,10 @@ O site é claro: creme, branco, sálvia clarinho e bordô pastel nos fundos; o v
 - `.menu-btn`: abre e fecha o menu do celular (fecha com Esc, ao tocar num link ou ao alargar a tela).
 - `data-dias`: escreve "Faltam N dias".
 - `.nav a[href^="#"]`: marca no menu a seção que está na tela.
+- `data-catalogo` (com `data-destaque="N"` mostra só N), `data-filtros` e `data-busca`: catálogo lido de `/assets/produtos.json` (ver `docs/catalogo.md`). `/produtos/#id` abre a ficha do produto.
+- `?rascunho` no endereço: mostra os blocos `data-rascunho` e usa `assets/produtos-exemplo.json`.
+- `--rola` (0 a 1 na primeira tela): o "MR" grande do topo desce devagar ao rolar. Parado com "reduzir movimento".
 
 ## Imagens de compartilhamento
 
-`assets/og.png` e `assets/og-imersao.png` (1200×630) são geradas a partir de `docs/og/og.html` (`?p=home` ou `?p=imersao`), com um print de 1200×630 no navegador. O site não usa fotos do Marcos.
+`assets/og.png` e `assets/og-imersao.png` (1200×630) são geradas a partir de `docs/og/og.html` (`?p=home` ou `?p=imersao`), com um print de 1200×630 no navegador. O site não usa fotos do Marcos. Desde 24/10/2026 a imagem do Início diz "Vende e indica · Produtos e consultoria".

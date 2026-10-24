@@ -54,7 +54,7 @@ jobs:
       - name: Conferir o site
         if: inputs.modo == 'publicar'
         run: |
-          for u in / /imersao/ /assets/mr.css /assets/mr.js /assets/vagas.json /assets/og.png /assets/og-imersao.png; do
+          for u in / /produtos/ /consultoria/ /imersao/ /assets/produtos.json /assets/fontes/fontes.css /assets/mr.css /assets/mr.js /assets/vagas.json /assets/og.png /assets/og-imersao.png; do
             c=$(curl -s -o /dev/null -w "%{http_code}" "https://marcosconsultoria.com.br$u")
             echo "$c $u"
             [ "$c" = "200" ] || { echo "::error::$u respondeu $c"; exit 1; }

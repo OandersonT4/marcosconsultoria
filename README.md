@@ -2,8 +2,11 @@
 
 Site da MR Gestão e Assessoria (Marcos Rodrigues). HTML, CSS e JavaScript sem build.
 
-- `index.html`: página inicial.
-- `imersao/`: página da Imersão Gestão e Liderança (28/11/2026).
+- `index.html`: página inicial (desde 24/10/2026): o catálogo em primeiro lugar e a consultoria logo no topo, que leva para `/consultoria/`.
+- `produtos/`: catálogo dos produtos que o Marcos vende e indica, lido de `assets/produtos.json` (como preencher: `docs/catalogo.md`). Filtro por categoria, busca, ficha de cada produto e pedido pelo WhatsApp com o produto já escrito.
+- `consultoria/`: o que a pessoa recebe na consultoria, antes de ir para o WhatsApp. As partes que dependem do Marcos ficam prontas e escondidas; aparecem com `?rascunho` no endereço.
+- `imersao/`: página da Imersão Gestão e Liderança. **Oculta desde 24/10/2026** (a imersão não vai mais acontecer): continua no ar, mas sem link no site e com `noindex`. Preços, vagas e Eduzz abaixo ficam só como registro.
+- `assets/fontes/`: Gloock e Figtree servidas pelo próprio site (antes vinham do Google Fonts), licença em `OFL.txt`.
 - `assets/mr.css` e `assets/mr.js`: design system e comportamento comum (ver `docs/design-system.md`).
 - `assets/og*.png`: imagens que aparecem ao compartilhar o link.
 - `docs/`: documentação e modelo das imagens de compartilhamento. Não vai para a VPS.

@@ -1,0 +1,10 @@
+{
+  "aviso": "Produtos de EXEMPLO, só para ver o catálogo montado (abra /produtos/?rascunho). Não aparecem para o público. Os de verdade vão em produtos.json.",
+  "produtos": [
+    {"id": "exemplo-venda", "nome": "Exemplo de produto à venda", "categoria": "Categoria A", "tipo": "venda", "preco": 89.9, "preco_obs": "à vista no Pix", "resumo": "Uma linha curta sobre o produto.", "descricao": "O texto completo aparece aqui, na ficha que abre ao tocar na foto.\nPode ter mais de um parágrafo.", "destaque": true},
+    {"id": "exemplo-indicacao", "nome": "Exemplo de indicação com link", "categoria": "Categoria A", "tipo": "indicacao", "link": "https://example.com/", "preco": 149, "resumo": "O botão abre a loja parceira.", "descricao": "Produto que o Marcos indica e outra loja vende.", "destaque": true},
+    {"id": "exemplo-consulta", "nome": "Exemplo sem preço no site", "categoria": "Categoria B", "tipo": "venda", "resumo": "Sem preço: aparece \"Preço no WhatsApp\".", "descricao": "Quando o preço muda muito, deixe sem preço e o cliente pergunta.", "destaque": true},
+    {"id": "exemplo-indicacao-sem-link", "nome": "Exemplo de indicação sem link", "categoria": "Categoria B", "tipo": "indicacao", "resumo": "Sem link: o botão pergunta pelo WhatsApp.", "descricao": "Serve para indicações que o Marcos combina pessoalmente."},
+    {"id": "exemplo-c", "nome": "Outro exemplo à venda", "categoria": "Categoria C", "tipo": "venda", "preco": 39, "resumo": "Para ver a grade com mais itens.", "descricao": "Texto do produto."}
+  ]
+}
