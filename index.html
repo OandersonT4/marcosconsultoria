@@ -3,84 +3,183 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Marcos Rodrigues · MR Gestão e Assessoria</title>
-<meta name="description" content="Marcos Rodrigues, mais de 35 anos vivendo o dia a dia das empresas de Nova Serrana. Consultoria e treinamentos para a indústria e o comércio.">
-<meta property="og:title" content="Marcos Rodrigues · MR Gestão e Assessoria">
-<meta property="og:description" content="Consultoria e treinamentos para a indústria e o comércio em Nova Serrana, MG.">
+<title>Marcos Rodrigues · Produtos e consultoria · Nova Serrana, MG</title>
+<meta name="description" content="Produtos que o Marcos Rodrigues vende e indica, escolhidos por quem vive o dia a dia das empresas de Nova Serrana há mais de 35 anos. Consultoria para a sua empresa pelo WhatsApp.">
+<meta property="og:title" content="Marcos Rodrigues · Produtos e consultoria">
+<meta property="og:description" content="O que o Marcos vende e indica, num só lugar. Nova Serrana, MG.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://marcosconsultoria.com.br/">
-<meta property="og:image" content="https://marcosconsultoria.com.br/assets/og.png">
+<meta property="og:image" content="https://marcosconsultoria.com.br/assets/og.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F3EEE4">
+<meta name="theme-color" content="#FAF7F1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2316302B'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' fill='%23F3EEE4' text-anchor='middle'%3EMR%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/mr.css?v=3">
+<link rel="preload" href="/assets/fontes/gloock-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fontes/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fontes/fontes.css?v=1">
+<link rel="stylesheet" href="/assets/mr.css?v=4">
 <script>document.documentElement.classList.add("js")</script>
 <style>
-body{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:calc(48px + env(safe-area-inset-top,0px)) 16px calc(48px + env(safe-area-inset-bottom,0px));color:var(--pine);text-align:center;
-  background:radial-gradient(900px 460px at 50% -80px,rgba(214,221,210,.95),transparent 70%) no-repeat,radial-gradient(760px 440px at 50% 112%,rgba(226,207,211,.7),transparent 70%) no-repeat,var(--cream)}
-body::after{content:"MR";position:fixed;left:50%;bottom:-.3em;transform:translateX(-50%);font-family:var(--f-display);font-size:clamp(16rem,48vw,34rem);line-height:1;letter-spacing:-.06em;color:rgba(22,48,43,.03);pointer-events:none;z-index:-1}
-main{width:100%;max-width:440px;display:grid;justify-items:center}
-main > *{animation:rise .7s var(--ease) both}
-main > :nth-child(2){animation-delay:.06s} main > :nth-child(3){animation-delay:.12s} main > :nth-child(4){animation-delay:.18s}
-main > :nth-child(5){animation-delay:.24s} main > :nth-child(6){animation-delay:.3s} main > :nth-child(7){animation-delay:.36s}
-@keyframes rise{from{opacity:.001;transform:translateY(14px)}to{opacity:1;transform:none}}
-.mark{background:var(--pine);color:var(--cream)}
-h1{margin-top:28px;font-size:clamp(2.4rem,9vw,3.1rem);line-height:1.05}
-.sub{margin-top:10px;font-size:var(--t-xs);font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-dk)}
-.rule{margin-top:30px}
-.lede{margin-top:30px;font-size:1.02rem;color:var(--ink-2);text-align:center}
-.links{margin-top:30px;width:100%;display:grid;gap:14px}
-.link{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;text-decoration:none;padding:18px 20px;border-radius:var(--r-md);transition:transform var(--dur) var(--ease),background var(--dur) ease,box-shadow var(--dur) ease,border-color var(--dur) ease}
-.link:hover{transform:translateY(-2px)}
-.link b{display:block;font-weight:700;font-size:1.02rem;line-height:1.3}
-.link small{display:block;margin-top:3px;font-size:.88rem;line-height:1.35}
-.link svg{flex:none;width:22px;height:22px;transition:transform var(--dur) var(--ease)}
-.link:hover svg{transform:translateX(3px)}
-.link-main{background:var(--pine);color:var(--cream);box-shadow:0 14px 30px -18px rgba(22,48,43,.7)}
-.link-main:hover{background:var(--pine-2)}
-.link-main small{color:var(--on-dark-muted)}
-.link-alt{background:var(--white);border:1px solid var(--line);color:var(--pine);box-shadow:var(--sh-1)}
-.link-alt:hover{border-color:var(--rose);background:var(--rose-lt)}
-.link-alt small{color:var(--muted)}
-.link .live{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--wine)}
-.link .dot{background:var(--wine);box-shadow:0 0 0 4px rgba(91,43,54,.12)}
-.foot-home{margin-top:34px;font-size:.88rem;color:var(--muted);display:grid;gap:6px}
-.foot-home a{color:var(--pine);text-underline-offset:3px}
+/* Início (24/10/2026): catálogo em primeiro lugar, consultoria logo no topo. */
+.hero{position:relative;overflow:hidden;padding-block:clamp(48px,8vw,104px) clamp(56px,8vw,96px);
+  background:radial-gradient(900px 480px at 85% -10%,rgba(214,221,210,.9),transparent 70%),radial-gradient(700px 420px at -10% 110%,rgba(226,207,211,.65),transparent 70%),var(--cream)}
+.hero::after{content:"MR";position:absolute;right:-.06em;bottom:-.22em;font-family:var(--f-display);font-size:clamp(14rem,34vw,30rem);line-height:1;letter-spacing:-.06em;color:rgba(22,48,43,.035);pointer-events:none;transform:translateY(calc(var(--rola,0) * 60px))}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);align-items:center}
+.hero h1{margin-top:22px;font-size:clamp(3rem,8.6vw,6.2rem);line-height:.96;color:var(--pine)}
+.hero h1 em{font-style:normal;color:var(--wine)}
+.hero .lede{margin-top:24px}
+.hero-acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.cons{display:grid;gap:18px;padding:clamp(26px,3.4vw,36px);border-radius:var(--r-lg);background:var(--pine);color:var(--cream);box-shadow:var(--sh-2);text-decoration:none;transition:transform var(--dur) var(--ease),box-shadow var(--dur) ease}
+.cons:hover{transform:translateY(-4px)}
+.cons .eyebrow{color:var(--brass-lt)}
+.cons h2{font-size:clamp(1.9rem,3.4vw,2.5rem)}
+.cons p{color:var(--on-dark)}
+.cons ul{display:grid;gap:10px;margin:0;padding:0;list-style:none;color:var(--on-dark);font-size:var(--t-sm)}
+.cons li{display:flex;gap:10px;align-items:flex-start}
+.cons li::before{content:"";flex:none;width:6px;height:6px;margin-top:.6em;border-radius:50%;background:var(--brass-lt)}
+.cons .ir{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:18px;border-top:1px solid var(--line-soft);font-weight:700}
+.cons .ir span:last-child{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--brass);color:var(--pine);transition:transform var(--dur) var(--ease)}
+.cons:hover .ir span:last-child{transform:translateX(4px)}
+.vitrine-pe{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:clamp(28px,4vw,40px)}
+.passos{counter-reset:p;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);margin:0;padding:0;list-style:none}
+.passos li{counter-increment:p;padding:clamp(22px,3vw,30px);border-radius:var(--r-md);background:var(--white);border:1px solid var(--line)}
+.passos li::before{content:"0" counter(p);display:block;margin-bottom:14px;font-family:var(--f-display);font-size:1.6rem;color:var(--wine)}
+.passos b{display:block;font-size:var(--t-lg)}
+.passos p{margin-top:6px;color:var(--muted);font-size:var(--t-sm)}
+.sobre{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,72px);align-items:center}
+.selo35{display:grid;place-items:center;aspect-ratio:1;max-width:340px;width:100%;margin-inline:auto;border-radius:50%;background:var(--white);border:1px solid var(--line);box-shadow:var(--sh-1);text-align:center}
+.selo35 b{display:block;font-family:var(--f-display);font-weight:400;font-size:clamp(5rem,12vw,7.4rem);line-height:.9;color:var(--wine)}
+.selo35 span{display:block;margin-top:8px;font-size:var(--t-xs);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-dk)}
+.sobre .lede + .lede{margin-top:14px}
+.areas{margin-top:24px}
+@media (max-width:860px){
+  .hero .wrap,.sobre{grid-template-columns:1fr}
+  .passos{grid-template-columns:1fr}
+  .selo35{max-width:240px}
+}
 </style>
 </head>
 <body>
-<main>
-  <span class="mark mark--lg" aria-hidden="true">MR</span>
-  <h1>Marcos Rodrigues</h1>
-  <p class="sub">MR Gestão e Assessoria</p>
-  <hr class="rule">
-  <p class="lede">Mais de 35 anos vivendo o dia a dia das empresas de Nova Serrana. Consultoria e treinamentos para a indústria e o comércio: organização de processos, desenvolvimento de líderes e equipes, redução de desperdícios e acompanhamento de resultados.</p>
 
-  <nav class="links" aria-label="Links">
-    <a class="link link-main" data-wa="Olá, Marcos! Quero agendar uma consultoria." href="https://wa.me/5537991474586">
-      <span><b>Agendar uma consultoria</b><small>Fale com o Marcos pelo WhatsApp</small></span>
-      <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="MR Gestão e Assessoria, página inicial">
+      <span class="mark">MR</span>
+      <span class="brand-txt"><strong>Marcos Rodrigues</strong><small>MR Gestão e Assessoria</small></span>
     </a>
-    <a class="link link-alt" href="/imersao/">
-      <span>
-        <b>Imersão Gestão e Liderança</b>
-        <small>28 de novembro de 2026 · Nova Serrana, MG</small>
-        <span class="live"><span class="dot" aria-hidden="true"></span><span data-dias>Vagas limitadas</span></span>
-      </span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+    <nav class="nav" aria-label="Páginas">
+      <a href="/produtos/">Produtos</a>
+      <a href="/consultoria/">Consultoria</a>
+      <a href="#marcos">Quem é Marcos</a>
+    </nav>
+    <div class="top-cta">
+      <a class="btn btn--pine btn--sm" href="/produtos/">Ver produtos</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span></button>
+    </div>
+  </div>
+  <nav class="menu" id="menu" aria-label="Menu">
+    <a href="/produtos/">Produtos</a>
+    <a href="/consultoria/">Consultoria</a>
+    <a href="#marcos">Quem é Marcos</a>
+    <a class="btn btn--wa" data-wa="Olá, Marcos! Vim pelo site." href="https://wa.me/5537991474586"><svg aria-hidden="true"><use href="#i-wa"/></svg>Falar no WhatsApp</a>
   </nav>
+</header>
 
-  <footer class="foot-home">
-    <span>Organizando processos. Capacitando pessoas.</span>
-    <a href="https://www.instagram.com/marquinhosconsultoria/" target="_blank" rel="noopener">@marquinhosconsultoria</a>
-  </footer>
+<main id="inicio">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow reveal"><span class="rule"></span>Nova Serrana · MG</p>
+        <h1 class="reveal" style="--i:1">O que o Marcos <em>usa e indica</em>, num só lugar.</h1>
+        <p class="lede reveal" style="--i:2">Produtos escolhidos por quem vive o dia a dia das empresas de Nova Serrana há mais de 35 anos. Veja o catálogo e peça direto pelo WhatsApp, com o produto já escrito na mensagem.</p>
+        <div class="hero-acoes reveal" style="--i:3">
+          <a class="btn btn--brass" href="/produtos/">Ver o catálogo <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="/consultoria/">Consultoria</a>
+        </div>
+      </div>
+
+      <a class="cons reveal" style="--i:2" href="/consultoria/">
+        <p class="eyebrow"><span class="rule"></span>Para a sua empresa</p>
+        <h2>Consultoria com o Marcos</h2>
+        <p>Organização, pessoas e resultado, com quem conhece a indústria e o comércio daqui.</p>
+        <ul>
+          <li>Organização de processos</li>
+          <li>Desenvolvimento de líderes e equipes</li>
+          <li>Redução de desperdícios e acompanhamento de resultados</li>
+        </ul>
+        <span class="ir"><span>Veja o que você recebe</span><span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section section--white" id="produtos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><span class="rule"></span>Em destaque</p>
+        <h2 class="reveal" style="--i:1">Vende e <span class="accent">indica</span>.</h2>
+        <p class="lede reveal" style="--i:2">Alguns o Marcos vende direto; outros ele indica e você compra na loja parceira. O selo de cada produto mostra qual é qual.</p>
+      </div>
+      <div data-catalogo data-destaque="6" aria-live="polite"></div>
+      <div class="vitrine-pe">
+        <p class="muted">Tem dúvida sobre algum produto? É só perguntar.</p>
+        <a class="btn btn--pine" href="/produtos/">Ver o catálogo completo <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sage">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow reveal"><span class="rule"></span>Como comprar</p>
+        <h2 class="reveal" style="--i:1">Três toques e está pedido.</h2>
+      </div>
+      <ol class="passos">
+        <li class="reveal"><b>Escolha no catálogo</b><p>Toque na foto para ver os detalhes de cada produto.</p></li>
+        <li class="reveal" style="--i:1"><b>Toque em "Pedir"</b><p>O WhatsApp abre com o nome e o preço do produto já escritos. Nas indicações, o botão leva para a loja parceira.</p></li>
+        <li class="reveal" style="--i:2"><b>Combine com o Marcos</b><p>Pagamento e entrega você acerta direto com ele na conversa.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--paper" id="marcos">
+    <div class="wrap sobre">
+      <div class="selo35 reveal" aria-hidden="true"><div><b>35+</b><span>anos de empresa</span></div></div>
+      <div>
+        <p class="eyebrow reveal"><span class="rule"></span>Quem é Marcos</p>
+        <h2 class="reveal" style="--i:1;font-size:var(--t-h2)">Marcos <span class="accent">Rodrigues</span></h2>
+        <p class="lede reveal" style="--i:2">Mais de 35 anos vivendo o dia a dia das empresas de Nova Serrana. À frente da MR Gestão e Assessoria, ajuda a indústria e o comércio a organizar processos, formar líderes e equipes, reduzir desperdícios e acompanhar resultados.</p>
+        <p class="lede reveal" style="--i:3">É esse olhar que escolhe o que entra no catálogo.</p>
+        <div class="hero-acoes reveal" style="--i:4">
+          <a class="btn btn--wa" data-wa="Olá, Marcos! Vim pelo site." href="https://wa.me/5537991474586"><svg aria-hidden="true"><use href="#i-wa"/></svg>Falar com o Marcos</a>
+          <a class="btn btn--ghost" href="https://www.instagram.com/marquinhosconsultoria/" target="_blank" rel="noopener">@marquinhosconsultoria</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
-<script src="/assets/mr.js?v=3"></script>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <strong style="color:var(--cream)">MR Gestão e Assessoria Ltda</strong><br>
+      <span class="tag">Organizando processos. Capacitando pessoas.</span>
+    </div>
+    <div class="foot-links">
+      <a href="/produtos/">Produtos</a>
+      <a href="/consultoria/">Consultoria</a>
+      <a href="https://www.instagram.com/marquinhosconsultoria/" target="_blank" rel="noopener">@marquinhosconsultoria</a>
+      <a data-wa="Olá, Marcos! Vim pelo site." href="https://wa.me/5537991474586">WhatsApp (37) 99147-4586</a>
+    </div>
+  </div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></symbol>
+</svg>
+
+<script src="/assets/mr.js?v=4"></script>
 </body>
 </html>

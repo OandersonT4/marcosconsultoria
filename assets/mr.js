@@ -9,6 +9,8 @@ var MR = {
   INICIO: "2026-11-28T07:00:00-03:00"
 };
 // As vagas ficam em /assets/vagas.json ({"total": 80, "vendidas": 0}).
+// Os produtos do catálogo ficam em /assets/produtos.json (como preencher: docs/catalogo.md).
+// Com ?rascunho no endereço, a página mostra as partes ainda em montagem e o catálogo de exemplo.
 /* ======================== */
 
 (function(){
@@ -63,7 +65,12 @@ var MR = {
 
   // Barra de navegação: fundo ao rolar e menu do celular
   var top = document.querySelector(".top"), btn = document.querySelector(".menu-btn"), menu = document.getElementById("menu");
-  var aoRolar = function(){ if (top) top.classList.toggle("is-scrolled", window.scrollY > 8); };
+  var calmo = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var aoRolar = function(){
+    if (top) top.classList.toggle("is-scrolled", window.scrollY > 8);
+    // --rola (0 a 1 na primeira tela): o "MR" grande do topo desce devagar ao rolar
+    if (!calmo) document.documentElement.style.setProperty("--rola", Math.min(1, window.scrollY / window.innerHeight).toFixed(3));
+  };
   window.addEventListener("scroll", aoRolar, { passive: true }); aoRolar();
   if (btn && menu) {
     var abrir = function(on){
@@ -75,6 +82,99 @@ var MR = {
     menu.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ abrir(false); }); });
     document.addEventListener("keydown", function(e){ if (e.key === "Escape") abrir(false); });
     window.addEventListener("resize", function(){ if (window.innerWidth > 960) abrir(false); });
+  }
+
+  // Rascunho: ?rascunho mostra os blocos [data-rascunho] e usa o catálogo de exemplo
+  var rascunho = /[?&]rascunho\b/.test(location.search);
+  if (rascunho) {
+    document.documentElement.classList.add("rascunho");
+    var av = document.createElement("p"); av.className = "aviso-rascunho";
+    av.textContent = "Rascunho: as partes tracejadas e os produtos de exemplo não aparecem para o público.";
+    document.body.appendChild(av);
+  }
+
+  // Catálogo: [data-catalogo] (com data-destaque="N" mostra só os N em destaque), [data-filtros], [data-busca]
+  var lista = document.querySelector("[data-catalogo]");
+  if (lista && window.fetch) {
+    var esc = function(t){ return String(t == null ? "" : t).replace(/[&<>"']/g, function(c){ return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]; }); };
+    var real = function(v){ return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); };
+    var sem = function(t){ return String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); };
+    var destaque = +lista.getAttribute("data-destaque") || 0;
+    var filtros = document.querySelector("[data-filtros]"), busca = document.querySelector("[data-busca]");
+    var produtos = [], cat = "", termo = "", ficha;
+
+    var precoHtml = function(p){
+      if (typeof p.preco === "number") return '<span class="preco">' + real(p.preco) + (p.preco_obs ? "<small>" + esc(p.preco_obs) + "</small>" : "") + "</span>";
+      return '<span class="preco preco--consulta">' + esc(p.preco_obs || "Preço no WhatsApp") + "</span>";
+    };
+    var acao = function(p, cls){
+      if (p.tipo === "indicacao" && p.link) return '<a class="btn btn--pine ' + cls + '" href="' + esc(p.link) + '" target="_blank" rel="sponsored noopener">Ver na loja <span class="arrow" aria-hidden="true">→</span></a>';
+      var msg = p.tipo === "indicacao"
+        ? "Olá, Marcos! Vi no site a sua indicação: " + p.nome + ". Pode me contar mais?"
+        : "Olá, Marcos! Vi no site e quero: " + p.nome + (typeof p.preco === "number" ? " (" + real(p.preco) + ")" : "") + ".";
+      return '<a class="btn btn--wa ' + cls + '" href="' + wa(msg) + '" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>' + (p.tipo === "indicacao" ? "Perguntar" : "Pedir") + "</a>";
+    };
+    var foto = function(p){
+      return p.foto ? '<img src="' + esc(p.foto) + '" alt="' + esc(p.foto_alt || p.nome) + '" loading="lazy" decoding="async">' : '<span class="prod-ph" aria-hidden="true">' + esc((p.nome || "M").charAt(0)) + "</span>";
+    };
+    var selo = function(p){ return p.tipo === "indicacao" ? '<span class="prod-selo">Indicação</span>' : '<span class="prod-selo prod-selo--venda">Venda direta</span>'; };
+
+    var desenhar = function(){
+      var t = sem(termo), vis = produtos.filter(function(p){
+        return (!cat || p.categoria === cat) && (!t || sem(p.nome + " " + p.categoria + " " + p.resumo + " " + p.descricao).indexOf(t) > -1);
+      });
+      if (destaque) vis = vis.filter(function(p){ return p.destaque; }).concat(vis.filter(function(p){ return !p.destaque; })).slice(0, destaque);
+      if (!vis.length) {
+        lista.innerHTML = produtos.length
+          ? '<div class="vazio"><h3>Nada encontrado</h3><p>Tente outra palavra ou pergunte direto ao Marcos.</p><a class="btn btn--wa btn--sm" href="' + wa("Olá, Marcos! Procurei no site e não achei: " + termo) + '" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Perguntar no WhatsApp</a></div>'
+          : '<div class="vazio"><span class="mark">MR</span><h3>O catálogo está sendo montado</h3><p>Os produtos que o Marcos vende e indica entram aqui em breve. Enquanto isso, pergunte pelo WhatsApp.</p><a class="btn btn--wa btn--sm" href="' + wa("Olá, Marcos! Quero saber quais produtos você vende e indica.") + '" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Perguntar no WhatsApp</a></div>';
+        lista.classList.remove("prods");
+        return;
+      }
+      lista.classList.add("prods");
+      lista.innerHTML = vis.map(function(p){
+        return '<article class="prod" id="' + esc(p.id) + '">' +
+          '<button class="prod-foto" type="button" data-ficha="' + esc(p.id) + '" aria-label="Ver detalhes de ' + esc(p.nome) + '">' + foto(p) + selo(p) + "</button>" +
+          '<div class="prod-corpo"><span class="prod-cat">' + esc(p.categoria) + "</span><h3>" + esc(p.nome) + "</h3>" + (p.resumo ? "<p>" + esc(p.resumo) + "</p>" : "") +
+          '<div class="prod-pe">' + precoHtml(p) + acao(p, "btn--sm") + "</div></div></article>";
+      }).join("");
+    };
+
+    var abrirFicha = function(id){
+      var p = produtos.filter(function(x){ return x.id === id; })[0]; if (!p) return;
+      if (!ficha) {
+        ficha = document.createElement("dialog"); ficha.className = "ficha";
+        ficha.addEventListener("click", function(e){ if (e.target === ficha || e.target.closest(".ficha-fechar")) ficha.close(); });
+        document.body.appendChild(ficha);
+      }
+      ficha.innerHTML = '<button class="ficha-fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+        '<div class="ficha-in"><div class="ficha-foto">' + foto(p) + '</div><div class="ficha-txt"><span class="prod-cat">' + esc(p.categoria) + (p.tipo === "indicacao" ? " · Indicação" : "") + "</span><h2>" + esc(p.nome) + "</h2>" +
+        '<p class="desc">' + esc(p.descricao || p.resumo) + "</p>" + precoHtml(p) + acao(p, "btn--block") +
+        (p.tipo === "indicacao" ? '<p class="muted" style="font-size:var(--t-xs)">Produto indicado pelo Marcos e vendido pela loja parceira.</p>' : "") + "</div></div>";
+      if (ficha.showModal) ficha.showModal(); else ficha.setAttribute("open", "");
+    };
+    lista.addEventListener("click", function(e){ var b = e.target.closest("[data-ficha]"); if (b) abrirFicha(b.getAttribute("data-ficha")); });
+
+    fetch(rascunho ? "/assets/produtos-exemplo.json" : "/assets/produtos.json", { cache: "no-store" })
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        produtos = (d.produtos || []).filter(function(p){ return p && p.id && p.nome && p.ativo !== false; });
+        if (filtros) {
+          var cats = produtos.map(function(p){ return p.categoria; }).filter(function(c, i, a){ return c && a.indexOf(c) === i; });
+          filtros.hidden = cats.length < 2;
+          filtros.innerHTML = ['<button class="filtro" type="button" aria-pressed="true" data-cat="">Todos</button>'].concat(cats.map(function(c){ return '<button class="filtro" type="button" aria-pressed="false" data-cat="' + esc(c) + '">' + esc(c) + "</button>"; })).join("");
+          filtros.addEventListener("click", function(e){
+            var b = e.target.closest(".filtro"); if (!b) return; cat = b.getAttribute("data-cat");
+            filtros.querySelectorAll(".filtro").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); desenhar();
+          });
+        }
+        if (busca) { busca.closest(".busca").hidden = produtos.length < 2; busca.addEventListener("input", function(){ termo = busca.value.trim(); desenhar(); }); }
+        desenhar();
+        // /produtos/#id abre a ficha do produto (link para mandar a alguém)
+        var peloHash = function(){ if (location.hash.length > 1) abrirFicha(decodeURIComponent(location.hash.slice(1))); };
+        peloHash(); window.addEventListener("hashchange", peloHash);
+      })
+      .catch(function(){ produtos = []; desenhar(); });
   }
 
   // Dúvidas: abre uma de cada vez
