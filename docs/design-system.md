@@ -62,6 +62,8 @@ O site é claro: creme, branco, sálvia clarinho e bordô pastel nos fundos; o v
 | `.filtros` + `.filtro[aria-pressed]`, `.busca` | categorias e busca do catálogo |
 | `.ficha` | `<dialog>` com os detalhes do produto |
 | `.vazio` | aviso de lista vazia (catálogo em montagem ou busca sem resultado) |
+| `.wa-flut` (com `data-wa`) | botão fixo do WhatsApp no canto, em toda página |
+| `.logo` | marca MR + nome (Marcos Rodrigues · MR Gestão e Assessoria), no topo do Início |
 | `[data-rascunho]`, `.aviso-rascunho` | blocos em montagem: só aparecem com `?rascunho` no endereço |
 
 ## Comportamento (`mr.js`)

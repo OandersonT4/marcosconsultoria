@@ -235,6 +235,20 @@ html.menu-aberto{overflow:hidden}
 .ficha-fechar svg{width:18px;height:18px;stroke:var(--pine);fill:none;stroke-width:2.2}
 @media (max-width:640px){.ficha-in{grid-template-columns:1fr}.ficha-foto{aspect-ratio:4/3}}
 
+/* ---------- WhatsApp fixo (todas as páginas) ---------- */
+.wa-flut{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:45;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;box-shadow:0 16px 34px -14px rgba(16,36,31,.8);transition:transform var(--dur) var(--ease)}
+.wa-flut svg{width:30px;height:30px;fill:currentColor}
+.wa-flut:hover{transform:translateY(-3px)}
+html.menu-aberto .wa-flut{display:none}
+html.rascunho .wa-flut{bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+@media print{.wa-flut{display:none}}
+
+/* ---------- logo (marca MR + nome) ---------- */
+.logo{display:inline-flex;align-items:center;gap:16px;text-decoration:none;color:var(--pine)}
+.logo .mark{font-size:2.4rem;background:var(--pine);color:var(--cream);box-shadow:var(--sh-1)}
+.logo b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.5rem;line-height:1.05}
+.logo small{display:block;margin-top:4px;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-dk)}
+
 /* ---------- rascunho (só com ?rascunho no endereço) ---------- */
 [data-rascunho]{display:none}
 html.rascunho [data-rascunho]{display:revert;outline:2px dashed var(--brass);outline-offset:6px}
