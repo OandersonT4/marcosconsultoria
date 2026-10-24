@@ -1,0 +1,29 @@
+{
+  "name": "Marcos Rodrigues · MR Gestão e Assessoria",
+  "short_name": "Marcos MR",
+  "description": "Produtos que o Marcos vende e indica, e consultoria para empresas em Nova Serrana.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F3EEE4",
+  "theme_color": "#16302B",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/assets/icones/mr-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icones/mr-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icones/mr-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
