@@ -31,7 +31,7 @@
 <link rel="preload" href="/assets/fontes/gloock-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fontes/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fontes/fontes.css?v=1">
-<link rel="stylesheet" href="/assets/mr.css?v=7">
+<link rel="stylesheet" href="/assets/mr.css?v=8">
 <script>document.documentElement.classList.add("js")</script>
 <style>
 /* Início (24/10/2026): catálogo em primeiro lugar, consultoria logo no topo. */
@@ -49,6 +49,11 @@
 .cons li{display:flex;gap:12px;align-items:flex-start}
 .cons li::before{content:"";flex:none;width:7px;height:7px;margin-top:.62em;border-radius:50%;background:var(--brass-lt)}
 .cons .hero-acoes{margin-top:28px}
+.cons-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.cons-tiles li{display:grid;gap:4px;padding:20px;border-radius:var(--r-md);background:var(--pine-2);border:1px solid var(--line-dark)}
+.cons-tiles svg{width:30px;height:30px;margin-bottom:8px;stroke:var(--brass-lt);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.cons-tiles b{font-family:var(--f-display);font-weight:400;font-size:1.3rem;line-height:1.15;color:var(--cream)}
+.cons-tiles span{font-size:var(--t-sm);color:var(--on-dark-muted)}
 .hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem)}
 .vitrine-pe{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:clamp(28px,4vw,40px)}
 .passos{counter-reset:p;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,20px);margin:0;padding:0;list-style:none}
@@ -194,15 +199,10 @@
       <div>
         <p class="eyebrow reveal"><span class="rule"></span>Consultoria para a sua fábrica</p>
         <h2 class="reveal" style="--i:1;margin-top:18px">Da bagunça à <span class="accent">produção</span>.</h2>
-        <ul class="reveal" style="--i:2">
-          <li>Layout do maquinário e adequação dos processos</li>
-          <li>Modelagem, consumo e custo sem desperdício</li>
-          <li>Treinamento de pessoal e formação de liderança</li>
-          <li>Indicação de produtos e avaliação de resultados</li>
-        </ul>
-        <div class="hero-acoes reveal" style="--i:3"><a class="btn btn--brass" href="/consultoria/">Ver a fábrica se organizar <span class="arrow" aria-hidden="true">→</span></a></div>
+        <p class="lede reveal" style="--i:2;margin-top:18px">Da compra à expedição: o Marcos organiza a fábrica, acerta consumo e custo, treina a equipe e acompanha o resultado.</p>
+        <div class="hero-acoes reveal" style="--i:3"><a class="btn btn--brass" href="/consultoria/#fabrica">Ver a fábrica se organizar <span class="arrow" aria-hidden="true">→</span></a></div>
       </div>
-      <div class="reveal" style="--i:2"><div class="planta" aria-hidden="true"><svg viewBox="0 0 100 75" preserveAspectRatio="none"><path class="pl-cota" d="M3 4H97M3 2.5V5.5M97 2.5V5.5M3 71V4"/><path class="pl-fluxo" pathLength="1" d="M14 18H62Q86 18 86 37.5T62 57H8"/><rect class="pl-par" x="-1.8" y="-1.2" width="3.6" height="2.4" rx=".8" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.55;.6;.88;.92" dur="7s" repeatCount="indefinite"/><animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;.58;.9;1" calcMode="linear" path="M14 18H62Q86 18 86 37.5T62 57H8"/></rect></svg><i class="pl-m" style="--x:14;--y:24;--dx:60%;--dy:80%;--rr:-25deg;--i:0">Estoque</i><i class="pl-m" style="--x:38;--y:24;--dx:-60%;--dy:120%;--rr:-15deg;--i:1">Corte</i><i class="pl-m" style="--x:62;--y:24;--dx:40%;--dy:-80%;--rr:25deg;--i:2">Costura</i><i class="pl-m" style="--x:86;--y:50;--dx:60%;--dy:-120%;--rr:-25deg;--i:3">Montagem</i><i class="pl-m" style="--x:62;--y:76;--dx:40%;--dy:80%;--rr:15deg;--i:4">Acabamento</i><i class="pl-m" style="--x:38;--y:76;--dx:60%;--dy:120%;--rr:-25deg;--i:5">Expedição</i></div></div>
+      <ul class="cons-tiles reveal" style="--i:2"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 9v12M15 15h6"/></svg><b>Layout</b><span>Máquinas e processos</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M7 4H4v3M20 17v3h-3"/><circle cx="12" cy="12" r="3"/></svg><b>Modelagem e custo</b><span>Sem desperdício</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5"/></svg><b>Pessoas e líderes</b><span>Treinamento e formação</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg><b>Resultados</b><span>Avaliação do que mudou</span></li></ul>
     </div>
   </section>
 

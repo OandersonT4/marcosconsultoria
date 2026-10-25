@@ -343,22 +343,6 @@ html.rascunho [data-rascunho]{display:revert;outline:2px dashed var(--brass);out
 .marcas:hover .marcas-trilho{animation-play-state:paused}
 @keyframes corre{to{transform:translateX(-50%)}}
 
-/* ---------- planta que se monta (laço curto) ---------- */
-.planta{position:relative;aspect-ratio:4/3;width:100%;border-radius:var(--r-md);background:linear-gradient(rgba(210,181,130,.13) 1px,transparent 1px) 0 0/8.333% 11.111%,linear-gradient(90deg,rgba(210,181,130,.13) 1px,transparent 1px) 0 0/8.333% 11.111%,var(--pine-3);border:1px solid var(--line-dark);overflow:hidden;container-type:inline-size}
-.planta svg{position:absolute;inset:0;width:100%;height:100%}
-.pl-m{position:absolute;font-style:normal;left:calc(var(--x) * 1%);top:calc(var(--y) * 1%);width:22%;height:15%;display:grid;place-items:center;border-radius:6px;background:var(--pine-4);border:1px solid var(--brass);color:var(--cream);font-size:clamp(.5rem,3.1cqw,.78rem);font-weight:700;letter-spacing:.04em;transform:translate(-50%,-50%)}
-.js .pl-m{animation:pl-monta 7s var(--e-calma) infinite;animation-delay:calc(var(--i) * 120ms)}
-@keyframes pl-monta{
-  0%,8%{transform:translate(-50%,-50%) translate(var(--dx),var(--dy)) rotate(var(--rr));border-color:rgba(176,141,87,.35);opacity:.65}
-  34%,90%{transform:translate(-50%,-50%);border-color:var(--brass);opacity:1}
-  100%{transform:translate(-50%,-50%) translate(var(--dx),var(--dy)) rotate(var(--rr));opacity:0}
-}
-.pl-fluxo{fill:none;stroke:var(--brass-lt);stroke-width:.9;stroke-linecap:round;stroke-dasharray:1 1}
-.js .pl-fluxo{animation:pl-linha 7s var(--e-calma) infinite}
-@keyframes pl-linha{0%,38%{stroke-dashoffset:1}58%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
-.pl-cota{fill:none;stroke:rgba(210,181,130,.55);stroke-width:.3;stroke-dasharray:1.2 1}
-.pl-par{fill:var(--brass)}
-
 /* ---------- cena: da bagunça à produção ---------- */
 .cena{position:relative;background:var(--pine);color:var(--cream)}
 .js .cena{height:520vh}
@@ -376,13 +360,13 @@ html.rascunho [data-rascunho]{display:revert;outline:2px dashed var(--brass);out
 .passos-cena li.on span{max-height:5em}
 .chao{position:relative;aspect-ratio:4/3;width:100%;border-radius:var(--r-lg);background:linear-gradient(rgba(22,48,43,.07) 1px,transparent 1px) 0 0/5% 6.667%,linear-gradient(90deg,rgba(22,48,43,.07) 1px,transparent 1px) 0 0/5% 6.667%,var(--cream);box-shadow:var(--sh-dark),inset 0 0 0 6px var(--paper);overflow:hidden;container-type:inline-size;color:var(--pine)}
 .chao svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.chao-maq{position:absolute;left:0;top:0;width:21%;height:16%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:8px;background:var(--white);border:1.5px solid var(--pine);box-shadow:0 10px 16px -12px rgba(16,36,31,.7);font-size:clamp(.52rem,2.6cqw,.86rem);font-weight:700;line-height:1.1;text-align:center;will-change:transform}
+.chao-maq{position:absolute;left:0;top:0;width:18%;height:13%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:8px;background:var(--white);border:1.5px solid var(--pine);box-shadow:0 10px 16px -12px rgba(16,36,31,.7);font-size:clamp(.42rem,2.15cqw,.8rem);font-weight:700;line-height:1.1;text-align:center;will-change:transform;padding:0 2px;overflow:hidden}
 .chao-maq svg{position:static;width:36%;height:auto;max-height:46%;stroke:var(--wine);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .chao.ok .chao-maq{border-color:var(--brass-dk)}
-.retalho{position:absolute;width:3.2%;aspect-ratio:1;background:var(--wine);opacity:.75;clip-path:polygon(0 30%,60% 0,100% 50%,45% 100%);will-change:transform,opacity}
+.retalho{position:absolute;width:2.8%;aspect-ratio:1;background:var(--wine);opacity:.75;clip-path:polygon(0 30%,60% 0,100% 50%,45% 100%);will-change:transform,opacity}
 .retalho:nth-child(3n){background:var(--brass)}
 .retalho:nth-child(4n){background:#3B2A22}
-.pessoa{position:absolute;left:0;top:0;width:3.6%;aspect-ratio:1;border-radius:50%;background:var(--wine);border:2px solid var(--white);box-shadow:0 4px 8px -4px rgba(0,0,0,.6);will-change:transform}
+.pessoa{position:absolute;left:0;top:0;width:3.2%;aspect-ratio:1;border-radius:50%;background:var(--wine);border:2px solid var(--white);box-shadow:0 4px 8px -4px rgba(0,0,0,.6);will-change:transform}
 .chao.lider .pessoa{background:var(--pine)}
 .pessoa.lider{background:var(--brass)!important}
 .espaguete{fill:none;stroke:var(--wine);stroke-width:.45;stroke-dasharray:1.4 1;opacity:.6}
