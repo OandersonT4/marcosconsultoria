@@ -95,14 +95,102 @@ var MR = {
   }
 
   // Catálogo: [data-catalogo] (com data-destaque="N" mostra só os N em destaque), [data-filtros], [data-busca]
+  // Sem filtro nem busca, a página de produtos mostra uma seção por linha (categoria).
+  // Cada produto sem foto mostra a amostra do material (campo "textura"; sem ele, a da categoria).
+  // "Pôr na lista" monta o pedido (guardado no navegador, vale entre as páginas) e manda tudo junto pelo WhatsApp.
   var lista = document.querySelector("[data-catalogo]");
+  var esc = function(t){ return String(t == null ? "" : t).replace(/[&<>"']/g, function(c){ return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]; }); };
+  var real = function(v){ return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); };
+  var TEXTURA_CAT = { "Placas": "papelao", "Laminados e espumas": "eva", "Sintéticos e forros": "couro", "Colas e químicos": "cola", "Palmilhas e matrizes": "palmilha" };
+  var tx = function(p){ return "tx tx-" + esc(p.textura || TEXTURA_CAT[p.categoria] || "papelao"); };
+  var ICO_MAIS = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+  var ICO_OK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+  // Lista de pedido: [{id, opcao, obs}] em localStorage
+  var CHAVE = "mr-lista";
+  var ler = function(){ try { return JSON.parse(localStorage.getItem(CHAVE)) || []; } catch(e){ return []; } };
+  var gravar = function(l){ try { localStorage.setItem(CHAVE, JSON.stringify(l)); } catch(e){} };
+  // A lista enviada fica guardada em "mr-ultima": com a lista vazia, a barra oferece "Repetir" (fábrica compra igual todo mês).
+  var lerUltima = function(){ try { return JSON.parse(localStorage.getItem(CHAVE + "-ultima")) || []; } catch(e){ return []; } };
+  var pedido = ler(), produtos = [], porId = {}, barra, gaveta;
+  var naLista = function(id){ return pedido.some(function(x){ return x.id === id; }); };
+
+  var mensagem = function(){
+    return "Olá, Marcos! Montei esta lista pelo site:\n" + pedido.map(function(x){
+      var p = porId[x.id]; if (!p) return "";
+      return "• " + p.nome + (x.opcao ? " · " + x.opcao : "") + (x.obs ? " · " + x.obs : "");
+    }).filter(Boolean).join("\n") + "\nPode me passar o preço e o prazo?";
+  };
+  var montarBarra = function(){
+    if (barra) return;
+    barra = document.createElement("div"); barra.className = "lista-barra"; barra.hidden = true;
+    barra.innerHTML = '<span class="pilha" aria-hidden="true"></span><p><b data-qtd></b>Diga cor, espessura e quantidade</p><button class="btn btn--brass btn--sm" type="button">Ver lista</button>';
+    barra.querySelector("button").addEventListener("click", function(){
+      if (!pedido.length) { pedido = lerUltima().filter(function(x){ return porId[x.id]; }); gravar(pedido); atualizarBarra(); }
+      abrirGaveta();
+    });
+    document.body.appendChild(barra);
+    gaveta = document.createElement("dialog"); gaveta.className = "gaveta"; gaveta.setAttribute("aria-label", "Sua lista");
+    gaveta.addEventListener("click", function(e){ if (e.target === gaveta || e.target.closest("[data-fechar]")) gaveta.close(); });
+    document.body.appendChild(gaveta);
+  };
+  var atualizarBarra = function(pular){
+    montarBarra();
+    var n = pedido.filter(function(x){ return porId[x.id]; }).length, ult = n ? [] : lerUltima().filter(function(x){ return porId[x.id]; });
+    barra.hidden = !n && !ult.length; document.body.classList.toggle("tem-lista", !barra.hidden);
+    barra.querySelector("p").innerHTML = n
+      ? "<b>" + (n === 1 ? "1 item na lista" : n + " itens na lista") + "</b>Diga cor, espessura e quantidade"
+      : "<b>Seu último pedido</b>" + (ult.length === 1 ? "1 item" : ult.length + " itens") + ", pronto para mandar de novo";
+    barra.querySelector("button").textContent = n ? "Ver lista" : "Repetir";
+    barra.querySelector(".pilha").innerHTML = (n ? pedido : ult).slice(-3).map(function(x){ return porId[x.id] ? '<i class="' + tx(porId[x.id]) + '"></i>' : ""; }).join("");
+    if (pular) { barra.classList.remove("pula"); void barra.offsetWidth; barra.classList.add("pula"); }
+    document.querySelectorAll("[data-por]").forEach(function(b){
+      var on = naLista(b.getAttribute("data-por"));
+      b.classList.toggle("na-lista", on); b.innerHTML = (on ? ICO_OK + "Na lista" : ICO_MAIS + "Pôr na lista");
+    });
+  };
+  var desenharGaveta = function(){
+    var linhas = pedido.filter(function(x){ return porId[x.id]; });
+    gaveta.innerHTML = '<div class="gaveta-cab"><h2>Sua lista</h2><button class="ficha-fechar" style="position:static" type="button" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' +
+      '<div class="gaveta-corpo">' + (linhas.length ? linhas.map(function(x){
+        var p = porId[x.id];
+        return '<div class="linha-ped" data-id="' + esc(p.id) + '"><i class="' + tx(p) + '"></i><b>' + esc(p.nome) + '</b>' +
+          '<button class="tirar" type="button" data-tirar aria-label="Tirar ' + esc(p.nome) + ' da lista"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+          (p.opcoes && p.opcoes.length ? '<div class="opcoes" role="group" aria-label="' + esc(p.opcoes_nome || "Opção") + '">' + p.opcoes.map(function(o){ return '<button class="opcao" type="button" aria-pressed="' + ((x.opcao || "").split(", ").indexOf(o) > -1) + '">' + esc(o) + "</button>"; }).join("") + "</div>" : "") +
+          '<input type="text" data-obs value="' + esc(x.obs || "") + '" placeholder="Cor, quantidade… (ex.: preto, 50 folhas)" aria-label="Detalhes de ' + esc(p.nome) + '"></div>';
+      }).join("") : '<p class="gaveta-vazia">A lista está vazia. Toque em "Pôr na lista" nos produtos.</p>') + "</div>" +
+      '<div class="gaveta-pe"><a class="btn btn--wa btn--block" data-enviar href="#"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar a lista para o Marcos</a><p class="muted">O Marcos responde com o preço e o prazo. Nada é cobrado aqui.</p></div>';
+    var enviar = gaveta.querySelector("[data-enviar]");
+    enviar.addEventListener("click", function(){
+      // depois de enviar, a lista vira o "último pedido" e esvazia
+      try { localStorage.setItem(CHAVE + "-ultima", JSON.stringify(pedido)); } catch(e){}
+      setTimeout(function(){ pedido = []; gravar(pedido); gaveta.close(); atualizarBarra(); }, 300);
+    });
+    var ligar = function(){ enviar.href = wa(mensagem()); abrirFora(enviar); };
+    ligar();
+    gaveta.querySelectorAll(".linha-ped").forEach(function(el){
+      var id = el.getAttribute("data-id"), item = pedido.filter(function(x){ return x.id === id; })[0];
+      el.querySelector("[data-tirar]").addEventListener("click", function(){ pedido = pedido.filter(function(x){ return x.id !== id; }); gravar(pedido); atualizarBarra(); desenharGaveta(); if (!pedido.length) gaveta.close(); });
+      el.querySelectorAll(".opcao").forEach(function(b){ b.addEventListener("click", function(){
+        // pode marcar mais de uma (ex.: duas espessuras); vai na mensagem separado por vírgula
+        b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true");
+        item.opcao = [].filter.call(el.querySelectorAll(".opcao"), function(o){ return o.getAttribute("aria-pressed") === "true"; }).map(function(o){ return o.textContent; }).join(", ");
+        gravar(pedido); ligar();
+      }); });
+      el.querySelector("[data-obs]").addEventListener("input", function(e){ item.obs = e.target.value.trim(); gravar(pedido); ligar(); });
+    });
+  };
+  var abrirGaveta = function(){ desenharGaveta(); if (gaveta.showModal) gaveta.showModal(); else gaveta.setAttribute("open", ""); };
+  var porNaLista = function(id){
+    if (naLista(id)) { abrirGaveta(); return; }
+    pedido.push({ id: id, opcao: "", obs: "" }); gravar(pedido); atualizarBarra(true);
+  };
+
   if (lista && window.fetch) {
-    var esc = function(t){ return String(t == null ? "" : t).replace(/[&<>"']/g, function(c){ return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]; }); };
-    var real = function(v){ return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); };
-    var sem = function(t){ return String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); };
+    var sem = function(t){ return String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); };
     var destaque = +lista.getAttribute("data-destaque") || 0;
     var filtros = document.querySelector("[data-filtros]"), busca = document.querySelector("[data-busca]");
-    var produtos = [], cat = "", termo = "", ficha;
+    var cat = "", termo = "", ficha;
 
     var precoHtml = function(p){
       if (typeof p.preco === "number") return '<span class="preco">' + real(p.preco) + (p.preco_obs ? "<small>" + esc(p.preco_obs) + "</small>" : "") + "</span>";
@@ -110,56 +198,74 @@ var MR = {
     };
     var acao = function(p, cls){
       if (p.tipo === "indicacao" && p.link) return '<a class="btn btn--pine ' + cls + '" href="' + esc(p.link) + '" target="_blank" rel="sponsored noopener">Ver na loja <span class="arrow" aria-hidden="true">→</span></a>';
-      var msg = p.tipo === "indicacao"
-        ? "Olá, Marcos! Vi no site a sua indicação: " + p.nome + ". Pode me contar mais?"
-        : "Olá, Marcos! Vi no site e quero: " + p.nome + (typeof p.preco === "number" ? " (" + real(p.preco) + ")" : "") + ".";
-      return '<a class="btn btn--wa ' + cls + '" href="' + wa(msg) + '" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>' + (p.tipo === "indicacao" ? "Perguntar" : "Pedir") + "</a>";
+      if (p.tipo === "indicacao") return '<a class="btn btn--wa ' + cls + '" href="' + wa("Olá, Marcos! Vi no site a sua indicação: " + p.nome + ". Pode me contar mais?") + '" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Perguntar</a>';
+      return '<button class="add" type="button" data-por="' + esc(p.id) + '"></button>';
     };
-    var foto = function(p){
-      return p.foto ? '<img src="' + esc(p.foto) + '" alt="' + esc(p.foto_alt || p.nome) + '" loading="lazy" decoding="async">' : '<span class="prod-ph" aria-hidden="true">' + esc((p.nome || "M").charAt(0)) + "</span>";
+    var amostra = function(p){
+      return p.foto ? '<img src="' + esc(p.foto) + '" alt="' + esc(p.foto_alt || p.nome) + '" loading="lazy" decoding="async">' : "";
     };
-    var selo = function(p){ return p.tipo === "indicacao" ? '<span class="prod-selo">Indicação</span>' : '<span class="prod-selo prod-selo--venda">Venda direta</span>'; };
+    var cartao = function(p){
+      return '<article class="item" id="' + esc(p.id) + '">' +
+        '<button class="item-amostra ' + (p.foto ? "" : tx(p)) + '" type="button" data-ficha="' + esc(p.id) + '" aria-label="Ver detalhes de ' + esc(p.nome) + '">' + amostra(p) + "</button>" +
+        '<div class="item-corpo">' + (p.selo ? '<span class="item-selo">' + esc(p.selo) + "</span>" : "") +
+        '<h3><button type="button" data-ficha="' + esc(p.id) + '">' + esc(p.nome) + "</button></h3>" + (p.resumo ? "<p>" + esc(p.resumo) + "</p>" : "") +
+        '<div class="item-pe">' + (typeof p.preco === "number" || p.preco_obs ? precoHtml(p) : "<span></span>") + acao(p, "btn--sm") + "</div></div></article>";
+    };
 
     var desenhar = function(){
       var t = sem(termo), vis = produtos.filter(function(p){
-        return (!cat || p.categoria === cat) && (!t || sem(p.nome + " " + p.categoria + " " + p.resumo + " " + p.descricao).indexOf(t) > -1);
+        return (!cat || p.categoria === cat) && (!t || sem(p.nome + " " + p.categoria + " " + p.resumo + " " + p.descricao + " " + (p.opcoes || []).join(" ")).indexOf(t) > -1);
       });
       if (destaque) vis = vis.filter(function(p){ return p.destaque; }).concat(vis.filter(function(p){ return !p.destaque; })).slice(0, destaque);
       if (!vis.length) {
+        lista.className = "";
         lista.innerHTML = produtos.length
           ? '<div class="vazio"><h3>Nada encontrado</h3><p>Tente outra palavra ou pergunte direto ao Marcos.</p><a class="btn btn--wa btn--sm" href="' + wa("Olá, Marcos! Procurei no site e não achei: " + termo) + '" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Perguntar no WhatsApp</a></div>'
-          : '<div class="vazio"><span class="mark">MR</span><h3>O catálogo está sendo montado</h3><p>Os produtos que o Marcos vende e indica entram aqui em breve. Enquanto isso, pergunte pelo WhatsApp.</p><a class="btn btn--wa btn--sm" href="' + wa("Olá, Marcos! Quero saber quais produtos você vende e indica.") + '" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Perguntar no WhatsApp</a></div>';
-        lista.classList.remove("prods");
+          : '<div class="vazio"><span class="mark">MR</span><h3>O catálogo está sendo montado</h3><p>Os produtos entram aqui em breve. Enquanto isso, pergunte pelo WhatsApp.</p><a class="btn btn--wa btn--sm" href="' + wa("Olá, Marcos! Quero saber quais produtos você tem.") + '" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Perguntar no WhatsApp</a></div>';
         return;
       }
-      lista.classList.add("prods");
-      lista.innerHTML = vis.map(function(p){
-        return '<article class="prod" id="' + esc(p.id) + '">' +
-          '<button class="prod-foto" type="button" data-ficha="' + esc(p.id) + '" aria-label="Ver detalhes de ' + esc(p.nome) + '">' + foto(p) + selo(p) + "</button>" +
-          '<div class="prod-corpo"><span class="prod-cat">' + esc(p.categoria) + "</span><h3>" + esc(p.nome) + "</h3>" + (p.resumo ? "<p>" + esc(p.resumo) + "</p>" : "") +
-          '<div class="prod-pe">' + precoHtml(p) + acao(p, "btn--sm") + "</div></div></article>";
-      }).join("");
+      if (!destaque && !cat && !t) {
+        var cats = vis.map(function(p){ return p.categoria; }).filter(function(c, i, a){ return a.indexOf(c) === i; });
+        lista.className = "catalogo";
+        lista.innerHTML = cats.map(function(c){
+          var dela = vis.filter(function(p){ return p.categoria === c; });
+          return '<section class="grupo"><div class="grupo-cab"><i class="tx tx-' + esc(TEXTURA_CAT[c] || "papelao") + '" aria-hidden="true"></i><h2>' + esc(c) + "</h2><small>" + dela.length + (dela.length === 1 ? " produto" : " produtos") + '</small></div><div class="cards">' + dela.map(cartao).join("") + "</div></section>";
+        }).join("");
+      } else {
+        lista.className = "cards";
+        lista.innerHTML = vis.map(cartao).join("");
+      }
+      atualizarBarra();
     };
 
     var abrirFicha = function(id){
-      var p = produtos.filter(function(x){ return x.id === id; })[0]; if (!p) return;
+      var p = porId[id]; if (!p) return;
       if (!ficha) {
         ficha = document.createElement("dialog"); ficha.className = "ficha";
-        ficha.addEventListener("click", function(e){ if (e.target === ficha || e.target.closest(".ficha-fechar")) ficha.close(); });
+        ficha.addEventListener("click", function(e){
+          if (e.target === ficha || e.target.closest(".ficha-fechar")) ficha.close();
+          var b = e.target.closest("[data-por]"); if (b) { ficha.close(); porNaLista(b.getAttribute("data-por")); }
+        });
         document.body.appendChild(ficha);
       }
       ficha.innerHTML = '<button class="ficha-fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
-        '<div class="ficha-in"><div class="ficha-foto">' + foto(p) + '</div><div class="ficha-txt"><span class="prod-cat">' + esc(p.categoria) + (p.tipo === "indicacao" ? " · Indicação" : "") + "</span><h2>" + esc(p.nome) + "</h2>" +
-        '<p class="desc">' + esc(p.descricao || p.resumo) + "</p>" + precoHtml(p) + acao(p, "btn--block") +
-        (p.tipo === "indicacao" ? '<p class="muted" style="font-size:var(--t-xs)">Produto indicado pelo Marcos e vendido pela loja parceira.</p>' : "") + "</div></div>";
+        '<div class="ficha-in"><div class="ficha-foto ' + (p.foto ? "" : tx(p)) + '">' + amostra(p) + '</div><div class="ficha-txt"><span class="prod-cat">' + esc(p.categoria) + (p.tipo === "indicacao" ? " · Indicação" : "") + "</span><h2>" + esc(p.nome) + "</h2>" +
+        '<p class="desc">' + esc(p.descricao || p.resumo) + "</p>" + (p.opcoes && p.opcoes.length ? '<ul class="chips">' + p.opcoes.map(function(o){ return '<li class="chip">' + esc(o) + "</li>"; }).join("") + "</ul>" : "") + precoHtml(p) +
+        (p.tipo === "indicacao" ? acao(p, "btn--block") : '<button class="btn btn--pine btn--block" type="button" data-por="' + esc(p.id) + '">Pôr na lista</button>') +
+        (p.tipo === "indicacao" ? '<p class="muted" style="font-size:var(--t-xs)">Produto indicado pelo Marcos e vendido pela loja parceira.</p>' : "") +
+        (p.pagina ? '<a class="btn btn--ghost btn--block" href="' + esc(p.pagina) + '">Ver a página do produto</a>' : "") + "</div></div>";
       if (ficha.showModal) ficha.showModal(); else ficha.setAttribute("open", "");
     };
-    lista.addEventListener("click", function(e){ var b = e.target.closest("[data-ficha]"); if (b) abrirFicha(b.getAttribute("data-ficha")); });
+    lista.addEventListener("click", function(e){
+      var b = e.target.closest("[data-por]"); if (b) { porNaLista(b.getAttribute("data-por")); return; }
+      var f = e.target.closest("[data-ficha]"); if (f) abrirFicha(f.getAttribute("data-ficha"));
+    });
 
     fetch(rascunho ? "/assets/produtos-exemplo.json" : "/assets/produtos.json", { cache: "no-store" })
       .then(function(r){ return r.json(); })
       .then(function(d){
         produtos = (d.produtos || []).filter(function(p){ return p && p.id && p.nome && p.ativo !== false; });
+        produtos.forEach(function(p){ porId[p.id] = p; });
         if (filtros) {
           var cats = produtos.map(function(p){ return p.categoria; }).filter(function(c, i, a){ return c && a.indexOf(c) === i; });
           filtros.hidden = cats.length < 2;
@@ -232,6 +338,35 @@ var MR = {
         caixa.addEventListener("change", atualizar); atualizar();
       })
       .catch(function(){});
+  }
+
+  // Raio-X da fábrica: [data-raiox] com .rx-perg (uma por vez) e .rx-op[data-marca="id do serviço"]
+  var rx = document.querySelector("[data-raiox]");
+  if (rx) {
+    var pergs = rx.querySelectorAll(".rx-perg"), fimRx = rx.querySelector(".rx-fim"), nRx = rx.querySelector("[data-rx-n]");
+    var respostas = [], marcas = {};
+    var mostrar = function(i){
+      pergs.forEach(function(f, k){ f.hidden = k !== i; });
+      fimRx.hidden = i < pergs.length;
+      rx.querySelector(".rx-conta").hidden = i >= pergs.length;
+      rx.style.setProperty("--p", i / pergs.length);
+      if (nRx) nRx.textContent = Math.min(i + 1, pergs.length);
+    };
+    pergs.forEach(function(f, i){
+      f.addEventListener("click", function(e){
+        var b = e.target.closest(".rx-op"); if (!b) return;
+        respostas[i] = f.querySelector("legend").textContent + " " + b.textContent;
+        var m = b.getAttribute("data-marca"); if (m) marcas[m] = true;
+        if (i + 1 < pergs.length) { mostrar(i + 1); var prox = pergs[i + 1].querySelector(".rx-op"); if (prox) prox.focus({ preventScroll: true }); return; }
+        marcas.avaliacao = true;
+        rx.querySelectorAll(".rx-res li").forEach(function(li){ li.hidden = !marcas[li.getAttribute("data-id")]; });
+        var env = rx.querySelector("[data-rx-enviar]");
+        env.href = wa("Olá, Marcos! Fiz o Raio-X da fábrica no site e quero agendar uma visita.\n" + respostas.map(function(r){ return "• " + r; }).join("\n")); abrirFora(env);
+        mostrar(pergs.length);
+      });
+    });
+    rx.querySelector("[data-rx-refazer]").addEventListener("click", function(){ respostas = []; marcas = {}; mostrar(0); });
+    mostrar(0);
   }
 
   // Dúvidas: abre uma de cada vez

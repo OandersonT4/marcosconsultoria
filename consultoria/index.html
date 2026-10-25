@@ -30,33 +30,27 @@
 <link rel="preload" href="/assets/fontes/gloock-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fontes/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fontes/fontes.css?v=1">
-<link rel="stylesheet" href="/assets/mr.css?v=6">
+<link rel="stylesheet" href="/assets/mr.css?v=7">
 <script>document.documentElement.classList.add("js")</script>
 <style>
 /* Consultoria (24/10/2026): a página que a pessoa vê antes de ir para o WhatsApp.
    Os blocos com data-rascunho só aparecem com ?rascunho no endereço; ao preencher um, tire o data-rascunho. */
 .hero{position:relative;overflow:hidden;padding-block:clamp(48px,8vw,104px);background:radial-gradient(900px 480px at 85% -10%,rgba(214,221,210,.9),transparent 70%),radial-gradient(700px 420px at -10% 110%,rgba(226,207,211,.65),transparent 70%),var(--cream)}
 .hero::after{content:"MR";position:absolute;right:-.06em;bottom:-.22em;font-family:var(--f-display);font-size:clamp(14rem,34vw,30rem);line-height:1;letter-spacing:-.06em;color:rgba(22,48,43,.035);pointer-events:none;transform:translateY(calc(var(--rola,0) * 60px))}
-.hero .wrap{position:relative;z-index:1;max-width:980px}
-.hero h1{margin-top:22px;font-size:clamp(2.9rem,8vw,5.6rem);line-height:.98;color:var(--pine)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero-planta{padding:12px;border-radius:var(--r-lg);background:var(--pine);box-shadow:var(--sh-2)}
+.hero-planta p{display:flex;justify-content:space-between;gap:10px;padding:12px 6px 2px;font-size:var(--t-xs);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-lt)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{margin-top:22px;font-size:clamp(2.6rem,6.4vw,4.8rem);line-height:.98;color:var(--pine)}
 .hero h1 em{font-style:normal;color:var(--wine)}
 .hero .lede{margin-top:24px}
+@media (max-width:640px){.hero{padding-block:28px 40px}.hero h1{font-size:2.5rem}.hero .lede{font-size:1rem;margin-top:16px}.acoes{gap:8px;margin-top:22px}.acoes .btn{min-height:46px;padding:.7em 1.2em;font-size:var(--t-sm)}.acoes a[href="#raio-x"]{display:none}}
 .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.areas{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media (max-width:1000px){.areas{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.areas{grid-template-columns:1fr}}
 .recebe{display:grid;gap:14px;margin:0;padding:0;list-style:none}
 .recebe li{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border-radius:var(--r-md);background:var(--white);border:1px solid var(--line)}
 .recebe li::before{content:"";flex:none;width:22px;height:22px;margin-top:2px;border-radius:50%;background:var(--sage) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316302B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/13px no-repeat}
 .recebe b{display:block}
 .recebe span{display:block;margin-top:2px;color:var(--muted);font-size:var(--t-sm)}
-.passos{counter-reset:p;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);margin:0;padding:0;list-style:none}
-.passos li{counter-increment:p;padding:clamp(22px,3vw,30px);border-radius:var(--r-md);background:var(--white);border:1px solid var(--line)}
-.passos li::before{content:"0" counter(p);display:block;margin-bottom:14px;font-family:var(--f-display);font-size:1.6rem;color:var(--wine)}
-.passos b{display:block;font-size:var(--t-lg)}
-.passos p{margin-top:6px;color:var(--muted);font-size:var(--t-sm)}
-@media (max-width:1000px){.passos{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.passos{grid-template-columns:1fr}}
 .depo blockquote{margin:0;font-family:var(--f-display);font-size:1.3rem;line-height:1.35;color:var(--pine)}
 .depo cite{display:block;margin-top:14px;font-style:normal;font-size:var(--t-sm);color:var(--muted)}
 .final{text-align:center}
@@ -138,28 +132,73 @@
 
   <section class="hero">
     <div class="wrap">
+      <div>
       <p class="eyebrow reveal"><span class="rule"></span>Consultoria empresarial em Nova Serrana, MG</p>
-      <h1 class="reveal" style="--i:1">Processos, pessoas e <em>resultado</em> na sua empresa.</h1>
+      <h1 class="reveal" style="--i:1">Processos, pessoas e <em>resultado</em> na sua fábrica.</h1>
       <p class="lede reveal" style="--i:2">Mais de 35 anos vivendo o dia a dia das fábricas de Nova Serrana. Layout do maquinário, modelagem, consumo e custo, treinamento do chão de fábrica, formação de liderança e avaliação de resultados.</p>
       <div class="acoes reveal" style="--i:3">
         <a class="btn btn--wa" data-wa="Olá, Marcos! Quero conversar sobre uma consultoria para a minha empresa." href="https://wa.me/5537991474586"><svg aria-hidden="true"><use href="#i-wa"/></svg>Conversar com o Marcos</a>
         <a class="btn btn--ghost" href="#pacotes" data-so-com-pacotes hidden>Montar minha consultoria</a>
-        <a class="btn btn--ghost" href="#como">Como funciona</a>
+        <a class="btn btn--ghost" href="#raio-x">Raio-X da fábrica</a>
       </div>
+      </div>
+      <figure class="hero-planta reveal" style="--i:2;margin:0">
+        <div class="planta" aria-hidden="true"><svg viewBox="0 0 100 75" preserveAspectRatio="none"><path class="pl-cota" d="M3 4H97M3 2.5V5.5M97 2.5V5.5M3 71V4"/><path class="pl-fluxo" pathLength="1" d="M14 18H62Q86 18 86 37.5T62 57H8"/><rect class="pl-par" x="-1.8" y="-1.2" width="3.6" height="2.4" rx=".8" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.55;.6;.88;.92" dur="7s" repeatCount="indefinite"/><animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;.58;.9;1" calcMode="linear" path="M14 18H62Q86 18 86 37.5T62 57H8"/></rect></svg><i class="pl-m" style="--x:14;--y:24;--dx:60%;--dy:80%;--rr:-25deg;--i:0">Estoque</i><i class="pl-m" style="--x:38;--y:24;--dx:-60%;--dy:120%;--rr:-15deg;--i:1">Corte</i><i class="pl-m" style="--x:62;--y:24;--dx:40%;--dy:-80%;--rr:25deg;--i:2">Costura</i><i class="pl-m" style="--x:86;--y:50;--dx:60%;--dy:-120%;--rr:-25deg;--i:3">Montagem</i><i class="pl-m" style="--x:62;--y:76;--dx:40%;--dy:80%;--rr:15deg;--i:4">Acabamento</i><i class="pl-m" style="--x:38;--y:76;--dx:60%;--dy:120%;--rr:-25deg;--i:5">Expedição</i></div>
+        <p><span>Layout da fábrica</span><span>Planta</span></p>
+      </figure>
     </div>
   </section>
 
-  <section class="section section--white">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow reveal"><span class="rule"></span>Onde a consultoria atua</p>
-        <h2 class="reveal" style="--i:1">Quatro frentes, <span class="accent">um objetivo</span>.</h2>
+  <!-- Momento-assinatura: a fábrica sai da bagunça e vira produção conforme a pessoa rola (assets/cena.js). -->
+  <section class="cena" data-cena aria-labelledby="cena-t">
+    <div class="wrap cena-fixa">
+      <div>
+        <p class="eyebrow"><span class="rule"></span>Da bagunça à produção</p>
+        <h2 id="cena-t" style="margin-top:14px">Role e veja a fábrica <em>se organizar</em>.</h2>
+        <div class="cena-pontos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <ol class="passos-cena">
+          <li data-n="1"><b>A bagunça</b><span>Máquinas fora de lugar, material indo e voltando e retalho no chão.</span></li>
+          <li data-n="2"><b>Layout</b><span>Disposição do maquinário e adequação dos processos, na ordem da produção.</span></li>
+          <li data-n="3"><b>Modelagem, consumo e custo</b><span>Modelagem corrigida, consumo e custo ajustados para evitar o desperdício.</span></li>
+          <li data-n="4"><b>Pessoas e liderança</b><span>Treinamento do chão de fábrica e formação de líderes, gestores e gerentes.</span></li>
+          <li data-n="5"><b>Produção</b><span>O trabalho flui, e os resultados são avaliados.</span></li>
+        </ol>
       </div>
-      <div class="grid areas">
-        <article class="card card--top reveal"><span class="num">01</span><h3 style="margin-top:10px">Layout e processos</h3><p class="muted">Disposição do maquinário e adequação dos processos da fábrica.</p></article>
-        <article class="card card--top reveal" style="--i:1"><span class="num">02</span><h3 style="margin-top:10px">Modelagem, consumo e custo</h3><p class="muted">Correção da modelagem, com consumo e custo ajustados para evitar desperdício.</p></article>
-        <article class="card card--top reveal" style="--i:2"><span class="num">03</span><h3 style="margin-top:10px">Pessoas e liderança</h3><p class="muted">Treinamento do chão de fábrica e formação de líderes, gestores e gerentes.</p></article>
-        <article class="card card--top reveal" style="--i:3"><span class="num">04</span><h3 style="margin-top:10px">Indicação e resultados</h3><p class="muted">Indicação de produtos e serviços e avaliação dos resultados.</p></article>
+      <div class="chao" aria-hidden="true"><svg viewBox="0 0 100 75" preserveAspectRatio="none" aria-hidden="true"><path class="espaguete" d="M70 52.5C50 60 30 40 22 45S70 30 82 18 40 8 34 22 60 40 54 35 20 10 13 16"/><path class="espaguete" d="M13 16C30 40 80 60 70 52.5S20 20 82 18 30 50 22 45"/><path class="fluxo" pathLength="1" stroke-dasharray="1 1" d="M14 18H62Q86 18 86 37.5T62 57H8"/><rect class="par" x="-2" y="-1.4" width="4" height="2.8" rx="1"><animateMotion dur="6s" begin="0.0s" repeatCount="indefinite" path="M14 18H62Q86 18 86 37.5T62 57H8"/></rect><rect class="par" x="-2" y="-1.4" width="4" height="2.8" rx="1"><animateMotion dur="6s" begin="-1.2s" repeatCount="indefinite" path="M14 18H62Q86 18 86 37.5T62 57H8"/></rect><rect class="par" x="-2" y="-1.4" width="4" height="2.8" rx="1"><animateMotion dur="6s" begin="-2.4s" repeatCount="indefinite" path="M14 18H62Q86 18 86 37.5T62 57H8"/></rect><rect class="par" x="-2" y="-1.4" width="4" height="2.8" rx="1"><animateMotion dur="6s" begin="-3.5999999999999996s" repeatCount="indefinite" path="M14 18H62Q86 18 86 37.5T62 57H8"/></rect><rect class="par" x="-2" y="-1.4" width="4" height="2.8" rx="1"><animateMotion dur="6s" begin="-4.8s" repeatCount="indefinite" path="M14 18H62Q86 18 86 37.5T62 57H8"/></rect></svg><i class="retalho" style="left:60%;top:86%"></i><i class="retalho" style="left:56%;top:41%"></i><i class="retalho" style="left:90%;top:12%"></i><i class="retalho" style="left:80%;top:32%"></i><i class="retalho" style="left:18%;top:18%"></i><i class="retalho" style="left:33%;top:75%"></i><i class="retalho" style="left:22%;top:56%"></i><i class="retalho" style="left:61%;top:39%"></i><i class="retalho" style="left:53%;top:13%"></i><i class="retalho" style="left:11%;top:25%"></i><i class="retalho" style="left:65%;top:43%"></i><i class="retalho" style="left:33%;top:56%"></i><i class="retalho" style="left:45%;top:33%"></i><i class="retalho" style="left:74%;top:65%"></i><i class="retalho" style="left:27%;top:55%"></i><i class="retalho" style="left:51%;top:80%"></i><div class="chao-maq" data-o="14,24" data-c="70,70,14" style="left:3.5%;top:16%"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11h7v7H4zM13 11h7v7h-7zM8.5 3.5h7v7h-7z"/></svg>Estoque</div><div class="chao-maq" data-o="38,24" data-c="22,60,-18" style="left:27.5%;top:16%"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="M8.2 8.4 20 17M8.2 15.6 20 7"/></svg>Corte</div><div class="chao-maq" data-o="62,24" data-c="82,24,9" style="left:51.5%;top:16%"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l3-4 3 4 3-4 3 4 3-4 3 4"/><path d="M12 3v8"/><circle cx="12" cy="3.5" r="1"/></svg>Costura</div><div class="chao-maq" data-o="86,50" data-c="34,30,-7" style="left:75.5%;top:42%"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15c0-4 2-7 5-7l2.5 3c3 1 7 1 9 3l1.5 1v2H3z"/><path d="M3 17.5h18"/></svg>Montagem</div><div class="chao-maq" data-o="62,76" data-c="54,47,22" style="left:51.5%;top:68%"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v5M12 16v5M3 12h5M16 12h5M6.5 6.5l2.5 2.5M15 15l2.5 2.5M17.5 6.5 15 9M9 15l-2.5 2.5"/></svg>Acabamento</div><div class="chao-maq" data-o="38,76" data-c="13,22,-11" style="left:27.5%;top:68%"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v9H2zM13 10h4.5l3.5 3.5V16h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Expedição</div><i class="pessoa" data-o="14,37" data-c="35,22" style="left:12.2%;top:34.6%"></i><i class="pessoa" data-o="38,37" data-c="63,16" style="left:36.2%;top:34.6%"></i><i class="pessoa" data-o="62,37" data-c="53,39" style="left:60.2%;top:34.6%"></i><i class="pessoa" data-o="74,50" data-c="13,51" style="left:72.2%;top:47.6%"></i><i class="pessoa" data-o="62,63" data-c="11,45" style="left:60.2%;top:60.6%"></i><i class="pessoa" data-o="38,63" data-c="14,17" style="left:36.2%;top:60.6%"></i><i class="pessoa lider" data-o="50,50" data-c="44,76" style="left:48.2%;top:47.6%"></i><i class="pessoa lider" data-o="26,50" data-c="18,28" style="left:24.2%;top:47.6%"></i><span class="chao-selo">Bagunça</span></div>
+    </div>
+  </section>
+
+
+  <!-- Raio-X da fábrica: 6 perguntas; cada resposta pode marcar um serviço (data-marca = id em assets/consultoria.json).
+       No fim mostra o que o Marcos olharia primeiro e manda as respostas pelo WhatsApp para agendar a visita (assets/mr.js, [data-raiox]). -->
+  <section class="section section--rose" id="raio-x">
+    <div class="wrap rx-grade">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="eyebrow reveal"><span class="rule"></span>Raio-X da fábrica</p>
+        <h2 class="reveal" style="--i:1">Seis perguntas, <span class="accent">um minuto</span>.</h2>
+        <p class="lede reveal" style="--i:2">Responda do jeito que está hoje. No fim você vê por onde o Marcos começaria e já pede a visita com as respostas escritas.</p>
+      </div>
+      <div class="rx reveal" style="--i:2" data-raiox>
+        <div class="rx-barra" aria-hidden="true"><i></i></div>
+        <p class="rx-conta" aria-live="polite">Pergunta <b data-rx-n>1</b> de 6</p>
+        <fieldset class="rx-perg" data-n="1"><legend>Quantos pares a fábrica faz por dia?</legend><div class="rx-ops"><button type="button" class="rx-op" data-marca="">Até 300</button><button type="button" class="rx-op" data-marca="">300 a 1.000</button><button type="button" class="rx-op" data-marca="">Mais de 1.000</button></div></fieldset>
+        <fieldset class="rx-perg" data-n="2" hidden><legend>O material vai e volta entre os setores?</legend><div class="rx-ops"><button type="button" class="rx-op" data-marca="layout">Sim, muito</button><button type="button" class="rx-op" data-marca="layout">Às vezes</button><button type="button" class="rx-op" data-marca="">Não</button></div></fieldset>
+        <fieldset class="rx-perg" data-n="3" hidden><legend>Sobra muito retalho no corte?</legend><div class="rx-ops"><button type="button" class="rx-op" data-marca="modelagem-consumo-custo">Sim</button><button type="button" class="rx-op" data-marca="modelagem-consumo-custo">Não sei</button><button type="button" class="rx-op" data-marca="">Pouco</button></div></fieldset>
+        <fieldset class="rx-perg" data-n="4" hidden><legend>Você sabe o custo certo de cada modelo?</legend><div class="rx-ops"><button type="button" class="rx-op" data-marca="">Sei</button><button type="button" class="rx-op" data-marca="modelagem-consumo-custo">Mais ou menos</button><button type="button" class="rx-op" data-marca="modelagem-consumo-custo">Não</button></div></fieldset>
+        <fieldset class="rx-perg" data-n="5" hidden><legend>Volta muito par com defeito para arrumar?</legend><div class="rx-ops"><button type="button" class="rx-op" data-marca="treinamento">Sim</button><button type="button" class="rx-op" data-marca="treinamento">Às vezes</button><button type="button" class="rx-op" data-marca="">Quase nunca</button></div></fieldset>
+        <fieldset class="rx-perg" data-n="6" hidden><legend>Os líderes tocam o setor sem você?</legend><div class="rx-ops"><button type="button" class="rx-op" data-marca="">Sim</button><button type="button" class="rx-op" data-marca="lideranca">Mais ou menos</button><button type="button" class="rx-op" data-marca="lideranca">Não</button></div></fieldset>
+        <div class="rx-fim" hidden>
+          <p class="eyebrow"><span class="rule"></span>Por onde começar</p>
+          <ul class="rx-res">
+            <li data-id="layout"><b>Layout da fábrica</b><span>Disposição do maquinário e adequação dos processos.</span></li>
+            <li data-id="modelagem-consumo-custo"><b>Modelagem, consumo e custo</b><span>Para o retalho diminuir e o custo de cada modelo ficar certo.</span></li>
+            <li data-id="treinamento"><b>Treinamento de pessoal</b><span>Para o par sair certo da primeira vez.</span></li>
+            <li data-id="lideranca"><b>Formação de liderança</b><span>Para os líderes tocarem o setor.</span></li>
+            <li data-id="avaliacao"><b>Avaliação de resultados</b><span>Para ver, em número, o que mudou.</span></li>
+          </ul>
+          <a class="btn btn--wa btn--block" data-rx-enviar href="#"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar a visita do Marcos</a>
+          <button class="rx-refazer" type="button" data-rx-refazer>Refazer as perguntas</button>
+        </div>
       </div>
     </div>
   </section>
@@ -189,12 +228,12 @@
         <h2 class="reveal" style="--i:1">Começa por uma <span class="accent">conversa</span>.</h2>
         <p class="lede reveal" style="--i:2">Para atender bem, a consultoria segue estes passos antes de fechar o negócio.</p>
       </div>
-      <ol class="passos">
-        <li class="reveal"><b>Você entra em contato</b><p>Conta a dor da empresa, a necessidade que tem hoje.</p></li>
-        <li class="reveal" style="--i:1"><b>Marcamos uma visita</b><p>O Marcos vai até a sua empresa para ver de perto.</p></li>
-        <li class="reveal" style="--i:2"><b>Avaliação</b><p>Ele avalia a empresa e o que precisa ser feito.</p></li>
-        <li class="reveal" style="--i:3"><b>Orçamento e proposta</b><p>Você recebe a proposta com o orçamento do trabalho.</p></li>
-        <li class="reveal" style="--i:4"><b>Fechamento</b><p>Remarcamos uma conversa para fechar o negócio e começar.</p></li>
+<ol class="tempo reveal">
+        <li style="--i:0"><span class="ico-t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><b>Você chama</b><span>Conta a dor da empresa, a necessidade de hoje.</span></li>
+        <li style="--i:1"><span class="ico-t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg></span><b>Visita</b><span>O Marcos vai até a sua empresa ver de perto.</span></li>
+        <li style="--i:2"><span class="ico-t"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M8.5 11l2 2 4-4M8.5 17h7"/></svg></span><b>Avaliação</b><span>Ele avalia o que precisa ser feito.</span></li>
+        <li style="--i:3"><span class="ico-t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 15h7M9 18h4"/></svg></span><b>Proposta</b><span>Você recebe o orçamento e a proposta.</span></li>
+        <li style="--i:4"><span class="ico-t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l4-4 4 3 3-2 7 5-4 4-3-2-2 2-3-2-2 1z"/><path d="M11 11l3 3"/></svg></span><b>Fechamento</b><span>Vocês se encontram de novo e fecham.</span></li>
       </ol>
     </div>
   </section>
@@ -285,7 +324,8 @@
   <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></symbol>
 </svg>
 
-<script src="/assets/mr.js?v=5"></script>
+<script src="/assets/mr.js?v=6"></script>
+<script src="/assets/cena.js?v=1" defer></script>
 <script src="/assets/atualizar.js?v=1" data-fundo="#16302B" data-texto="#F3EEE4" data-botao="#B08D57" data-botao-texto="#16302B" data-borda="rgba(176,141,87,.5)" defer></script>
 </body>
 </html>
