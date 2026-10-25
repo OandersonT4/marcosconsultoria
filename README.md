@@ -3,6 +3,7 @@
 Site da MR Gestão e Assessoria (Marcos Rodrigues). HTML, CSS e JavaScript sem build.
 
 - `index.html`: página inicial (desde 24/10/2026): o catálogo em primeiro lugar e a consultoria logo no topo, que leva para `/consultoria/`.
+- Conteúdo (25/10/2026, texto do próprio Marcos): o site é de **materiais para calçados** (commodities e especialidades, com a placa ecológica Tubox de fabricação própria) e **consultoria para fábricas** (layout, modelagem/consumo/custo, treinamento, liderança, indicação, avaliação). Consultoria funciona assim: contato, visita, avaliação, orçamento e proposta, fechamento. Os produtos ainda sem foto e sem preço ("Preço no WhatsApp").
 - `produtos/`: catálogo dos produtos que o Marcos vende e indica, lido de `assets/produtos.json` (como preencher: `docs/catalogo.md`). Filtro por categoria, busca, ficha de cada produto e pedido pelo WhatsApp com o produto já escrito.
 - `consultoria/`: o que a pessoa recebe na consultoria, antes de ir para o WhatsApp, e o **montador de pacotes** (serviços de `assets/consultoria.json`, com desconto por combinação; como preencher: `docs/consultoria.md`). É a página onde fica o WhatsApp da consultoria. As partes que dependem do Marcos ficam prontas e escondidas; aparecem com `?rascunho` no endereço.
 - `imersao/`: página da Imersão Gestão e Liderança. **Oculta desde 24/10/2026** (a imersão não vai mais acontecer): continua no ar, mas sem link no site e com `noindex`. Preços, vagas e Eduzz abaixo ficam só como registro.
