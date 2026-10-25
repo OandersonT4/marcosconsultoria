@@ -1,4 +1,11 @@
 {
-  "servicos": [],
+  "servicos": [
+    {"id": "layout", "nome": "Layout da fábrica", "resumo": "Disposição do maquinário e adequação dos processos.", "inclui": ["Disposição do maquinário", "Adequação dos processos"]},
+    {"id": "modelagem-consumo-custo", "nome": "Modelagem, consumo e custo", "resumo": "Correção da modelagem, com consumo e custo ajustados para evitar desperdício.", "inclui": ["Correção de modelagem", "Consumo de material ajustado", "Custo ajustado"]},
+    {"id": "treinamento", "nome": "Treinamento de pessoal", "resumo": "Treinamento do pessoal do chão de fábrica.", "inclui": ["Pessoal do chão de fábrica"]},
+    {"id": "lideranca", "nome": "Formação de liderança", "resumo": "Formação de líderes, gestores e gerentes.", "inclui": ["Líderes", "Gestores e gerentes"]},
+    {"id": "indicacao", "nome": "Indicação de produtos e serviços", "resumo": "O produto e o serviço certos para a necessidade da sua empresa."},
+    {"id": "avaliacao", "nome": "Avaliação de resultados", "resumo": "Acompanhamento do que foi feito, com o resultado medido."}
+  ],
   "descontos": []
 }

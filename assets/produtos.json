@@ -1,3 +1,21 @@
 {
-  "produtos": []
+  "produtos": [
+    {"id": "placa-ecologica", "nome": "Placa ecológica (Tubox)", "categoria": "Placas", "tipo": "venda", "preco_obs": "Preço de fabricante no WhatsApp", "resumo": "Fabricação própria: o melhor preço do mercado. Espessuras 0,6 · 0,8 · 1,0 · 1,5 · 2,0.", "descricao": "A placa ecológica, conhecida como Tubox, é fabricada pelo próprio Marcos. Por isso tem o melhor preço do mercado.\nEspessuras: 0,6 · 0,8 · 1,0 · 1,5 · 2,0.", "destaque": true},
+    {"id": "placas-papelao", "nome": "Placas de papelão", "categoria": "Placas", "tipo": "venda", "resumo": "Induma, Imasa, Agropel e importadas.", "descricao": "Placas de papelão das marcas Induma, Imasa e Agropel, e também importadas.", "destaque": true},
+    {"id": "napa-pvc", "nome": "Napa PVC 0,6", "categoria": "Laminados e espumas", "tipo": "venda", "resumo": "Todas as cores.", "descricao": "Napa PVC 0,6 em todas as cores."},
+    {"id": "eva-liso", "nome": "EVA liso", "categoria": "Laminados e espumas", "tipo": "venda", "resumo": "Todas as espessuras.", "descricao": "EVA liso em todas as espessuras.", "destaque": true},
+    {"id": "eva-jacquard", "nome": "EVA com jacquard", "categoria": "Laminados e espumas", "tipo": "venda", "resumo": "Todas as cores e espessuras.", "descricao": "EVA com jacquard em todas as cores e espessuras."},
+    {"id": "espuma-alta-densidade", "nome": "Espuma de alta densidade", "categoria": "Laminados e espumas", "tipo": "venda", "resumo": "2, 3, 4, 5 e 6 mm.", "descricao": "Espuma de alta densidade nas espessuras de 2, 3, 4, 5 e 6 mm."},
+    {"id": "dublagens", "nome": "Dublagens", "categoria": "Laminados e espumas", "tipo": "venda", "resumo": "Dublagem de materiais para calçados.", "descricao": "Serviço de dublagem de materiais. Conte pelo WhatsApp o que precisa dublar."},
+    {"id": "sinteticos", "nome": "Sintéticos", "categoria": "Sintéticos e forros", "tipo": "venda", "resumo": "Toda a linha Cipatex, Tec, Tuiutex e importados.", "descricao": "Toda a linha de sintéticos da Cipatex, da Tec e da Tuiutex, e também importados.", "destaque": true},
+    {"id": "camurca-dupla-face", "nome": "Camurça dupla face 1,2", "categoria": "Sintéticos e forros", "tipo": "venda", "resumo": "Todas as cores.", "descricao": "Camurça dupla face 1,2 em todas as cores."},
+    {"id": "forro-jacquard", "nome": "Forro jacquard", "categoria": "Sintéticos e forros", "tipo": "venda", "resumo": "Forro para calçados.", "descricao": "Forro jacquard para calçados."},
+    {"id": "forro-atoalhado", "nome": "Forro atoalhado", "categoria": "Sintéticos e forros", "tipo": "venda", "resumo": "Forro para calçados.", "descricao": "Forro atoalhado para calçados."},
+    {"id": "tecido-combate", "nome": "Tecido combate", "categoria": "Sintéticos e forros", "tipo": "venda", "resumo": "Tecido para calçados.", "descricao": "Tecido combate para calçados."},
+    {"id": "dublados-plastisol", "nome": "Dublados para plastisol", "categoria": "Sintéticos e forros", "tipo": "venda", "resumo": "Materiais dublados prontos para plastisol.", "descricao": "Materiais dublados para aplicação de plastisol."},
+    {"id": "colas-kizafix", "nome": "Colas Kizafix", "categoria": "Colas e químicos", "tipo": "venda", "resumo": "Toda a linha: PVC-PU, PVC-F, Forte, spray, solvente gelado, primer EVA, solvente cola e reticulante.", "descricao": "Toda a linha de colas da Kizafix:\n• PVC-PU\n• PVC-F\n• Forte\n• Spray\n• Solvente gelado\n• Primer EVA\n• Solvente cola\n• Reticulante", "destaque": true},
+    {"id": "colas-una-quimicola-fcc", "nome": "Colas Una, Quimicola e FCC", "categoria": "Colas e químicos", "tipo": "venda", "resumo": "Colas e químicos dessas marcas.", "descricao": "Também trabalhamos com as colas e químicos da Una, da Quimicola e da FCC. Pergunte pelo produto que você usa."},
+    {"id": "palmilha-conformada", "nome": "Palmilha conformada", "categoria": "Palmilhas e matrizes", "tipo": "venda", "resumo": "Palmilha conformada para calçados.", "descricao": "Palmilha conformada para calçados. Conte o modelo e a grade pelo WhatsApp.", "destaque": true},
+    {"id": "projeto-matrizes", "nome": "Projeto de matrizes", "categoria": "Palmilhas e matrizes", "tipo": "venda", "resumo": "Projeto de matrizes para a sua produção.", "descricao": "Projeto de matrizes para a sua produção. Conte o que precisa pelo WhatsApp."}
+  ]
 }
