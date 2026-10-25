@@ -330,7 +330,7 @@ html.rascunho [data-rascunho]{display:revert;outline:2px dashed var(--brass);out
 .leque .amostra:nth-child(3){--r:2deg;--x:0%;--y:-5%;--i:2}
 .leque .amostra:nth-child(4){--r:14deg;--x:16%;--y:-1%;--i:3}
 .leque .amostra:nth-child(5){--r:26deg;--x:33%;--y:7%;--i:4}
-.leque-selo{white-space:nowrap;position:absolute;left:50%;bottom:2%;z-index:2;transform:translateX(-50%);display:flex;align-items:center;gap:10px;width:max-content;max-width:100%;padding:10px 16px 10px 10px;border-radius:var(--r-pill);background:var(--pine);color:var(--cream);font-size:var(--t-sm);font-weight:600;box-shadow:var(--sh-2)}
+.leque-selo{text-decoration:none;white-space:nowrap;position:absolute;left:50%;bottom:2%;z-index:2;transform:translateX(-50%);display:flex;align-items:center;gap:10px;width:max-content;max-width:100%;padding:10px 16px 10px 10px;border-radius:var(--r-pill);background:var(--pine);color:var(--cream);font-size:var(--t-sm);font-weight:600;box-shadow:var(--sh-2)}
 .leque-selo b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--brass);color:var(--pine);font-family:var(--f-display);font-weight:400;font-size:1rem}
 .js .leque-selo{animation:sobe var(--d-2) var(--e-sai) 1s both}
 @keyframes sobe{from{opacity:0;transform:translate(-50%,16px)}}
@@ -494,3 +494,28 @@ body.tem-lista .foot{padding-bottom:84px}
   .tempo::after{transform:none}
   .marcas-trilho{flex-wrap:wrap;width:auto}
 }
+
+/* ---------- Raio-X da fábrica (perguntas com resposta em botão) ---------- */
+.rx-grade{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,64px);align-items:center}
+.rx{display:grid;gap:16px;padding:clamp(22px,3.4vw,34px);border-radius:var(--r-lg);background:var(--white);border:1px solid var(--line);box-shadow:var(--sh-1)}
+.rx-barra{height:6px;border-radius:6px;background:var(--cream);overflow:hidden}
+.rx-barra i{display:block;height:100%;width:calc(var(--p,0) * 100%);border-radius:inherit;background:var(--wine);transition:width var(--d-2) var(--e-sai)}
+.rx-conta{font-size:var(--t-xs);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-dk)}
+.rx-perg{margin:0;padding:0;border:0;min-width:0}
+.rx-perg:not([hidden]){animation:rx-entra var(--d-2) var(--e-sai)}
+@keyframes rx-entra{from{opacity:0;transform:translateX(24px)}}
+.rx-perg legend{padding:0;margin-bottom:18px;font-family:var(--f-display);font-size:clamp(1.5rem,3vw,2rem);line-height:1.12;color:var(--pine)}
+.rx-ops{display:grid;gap:10px}
+.rx-op{display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:0 20px;border:1.5px solid var(--line);border-radius:var(--r-md);background:var(--paper);font-size:var(--t-lg);font-weight:600;text-align:left;cursor:pointer;transition:border-color var(--d-1),background var(--d-1),transform var(--d-1) var(--e-mola)}
+.rx-op::after{content:"→";color:var(--brass-dk);transition:transform var(--d-1) var(--e-sai)}
+.rx-op:hover{border-color:var(--wine);background:var(--white)}
+.rx-op:hover::after{transform:translateX(4px)}
+.rx-op:active{transform:scale(.98)}
+.rx-fim:not([hidden]){display:grid;gap:14px;animation:rx-entra var(--d-2) var(--e-sai)}
+.rx-res{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.rx-res li{display:grid;gap:2px;padding:14px 16px 14px 48px;border-radius:var(--r-md);background:var(--sage-lt);position:relative}
+.rx-res li::before{content:"";position:absolute;left:14px;top:16px;width:22px;height:22px;border-radius:50%;background:var(--wine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F3EEE4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/13px no-repeat}
+.rx-res li[hidden]{display:none}
+.rx-res span{font-size:var(--t-sm);color:var(--muted)}
+.rx-refazer{justify-self:center;border:0;background:none;color:var(--muted);font-size:var(--t-sm);font-weight:600;text-decoration:underline;cursor:pointer}
+@media (max-width:860px){.rx-grade{grid-template-columns:1fr}}

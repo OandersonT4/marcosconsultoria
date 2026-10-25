@@ -110,6 +110,8 @@ var MR = {
   var CHAVE = "mr-lista";
   var ler = function(){ try { return JSON.parse(localStorage.getItem(CHAVE)) || []; } catch(e){ return []; } };
   var gravar = function(l){ try { localStorage.setItem(CHAVE, JSON.stringify(l)); } catch(e){} };
+  // A lista enviada fica guardada em "mr-ultima": com a lista vazia, a barra oferece "Repetir" (fábrica compra igual todo mês).
+  var lerUltima = function(){ try { return JSON.parse(localStorage.getItem(CHAVE + "-ultima")) || []; } catch(e){ return []; } };
   var pedido = ler(), produtos = [], porId = {}, barra, gaveta;
   var naLista = function(id){ return pedido.some(function(x){ return x.id === id; }); };
 
@@ -123,7 +125,10 @@ var MR = {
     if (barra) return;
     barra = document.createElement("div"); barra.className = "lista-barra"; barra.hidden = true;
     barra.innerHTML = '<span class="pilha" aria-hidden="true"></span><p><b data-qtd></b>Diga cor, espessura e quantidade</p><button class="btn btn--brass btn--sm" type="button">Ver lista</button>';
-    barra.querySelector("button").addEventListener("click", abrirGaveta);
+    barra.querySelector("button").addEventListener("click", function(){
+      if (!pedido.length) { pedido = lerUltima().filter(function(x){ return porId[x.id]; }); gravar(pedido); atualizarBarra(); }
+      abrirGaveta();
+    });
     document.body.appendChild(barra);
     gaveta = document.createElement("dialog"); gaveta.className = "gaveta"; gaveta.setAttribute("aria-label", "Sua lista");
     gaveta.addEventListener("click", function(e){ if (e.target === gaveta || e.target.closest("[data-fechar]")) gaveta.close(); });
@@ -131,10 +136,13 @@ var MR = {
   };
   var atualizarBarra = function(pular){
     montarBarra();
-    var n = pedido.filter(function(x){ return porId[x.id]; }).length;
-    barra.hidden = !n; document.body.classList.toggle("tem-lista", !!n);
-    barra.querySelector("[data-qtd]").textContent = n === 1 ? "1 item na lista" : n + " itens na lista";
-    barra.querySelector(".pilha").innerHTML = pedido.slice(-3).map(function(x){ return porId[x.id] ? '<i class="' + tx(porId[x.id]) + '"></i>' : ""; }).join("");
+    var n = pedido.filter(function(x){ return porId[x.id]; }).length, ult = n ? [] : lerUltima().filter(function(x){ return porId[x.id]; });
+    barra.hidden = !n && !ult.length; document.body.classList.toggle("tem-lista", !barra.hidden);
+    barra.querySelector("p").innerHTML = n
+      ? "<b>" + (n === 1 ? "1 item na lista" : n + " itens na lista") + "</b>Diga cor, espessura e quantidade"
+      : "<b>Seu último pedido</b>" + (ult.length === 1 ? "1 item" : ult.length + " itens") + ", pronto para mandar de novo";
+    barra.querySelector("button").textContent = n ? "Ver lista" : "Repetir";
+    barra.querySelector(".pilha").innerHTML = (n ? pedido : ult).slice(-3).map(function(x){ return porId[x.id] ? '<i class="' + tx(porId[x.id]) + '"></i>' : ""; }).join("");
     if (pular) { barra.classList.remove("pula"); void barra.offsetWidth; barra.classList.add("pula"); }
     document.querySelectorAll("[data-por]").forEach(function(b){
       var on = naLista(b.getAttribute("data-por"));
@@ -153,6 +161,11 @@ var MR = {
       }).join("") : '<p class="gaveta-vazia">A lista está vazia. Toque em "Pôr na lista" nos produtos.</p>') + "</div>" +
       '<div class="gaveta-pe"><a class="btn btn--wa btn--block" data-enviar href="#"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar a lista para o Marcos</a><p class="muted">O Marcos responde com o preço e o prazo. Nada é cobrado aqui.</p></div>';
     var enviar = gaveta.querySelector("[data-enviar]");
+    enviar.addEventListener("click", function(){
+      // depois de enviar, a lista vira o "último pedido" e esvazia
+      try { localStorage.setItem(CHAVE + "-ultima", JSON.stringify(pedido)); } catch(e){}
+      setTimeout(function(){ pedido = []; gravar(pedido); gaveta.close(); atualizarBarra(); }, 300);
+    });
     var ligar = function(){ enviar.href = wa(mensagem()); abrirFora(enviar); };
     ligar();
     gaveta.querySelectorAll(".linha-ped").forEach(function(el){
@@ -239,7 +252,8 @@ var MR = {
         '<div class="ficha-in"><div class="ficha-foto ' + (p.foto ? "" : tx(p)) + '">' + amostra(p) + '</div><div class="ficha-txt"><span class="prod-cat">' + esc(p.categoria) + (p.tipo === "indicacao" ? " · Indicação" : "") + "</span><h2>" + esc(p.nome) + "</h2>" +
         '<p class="desc">' + esc(p.descricao || p.resumo) + "</p>" + (p.opcoes && p.opcoes.length ? '<ul class="chips">' + p.opcoes.map(function(o){ return '<li class="chip">' + esc(o) + "</li>"; }).join("") + "</ul>" : "") + precoHtml(p) +
         (p.tipo === "indicacao" ? acao(p, "btn--block") : '<button class="btn btn--pine btn--block" type="button" data-por="' + esc(p.id) + '">Pôr na lista</button>') +
-        (p.tipo === "indicacao" ? '<p class="muted" style="font-size:var(--t-xs)">Produto indicado pelo Marcos e vendido pela loja parceira.</p>' : "") + "</div></div>";
+        (p.tipo === "indicacao" ? '<p class="muted" style="font-size:var(--t-xs)">Produto indicado pelo Marcos e vendido pela loja parceira.</p>' : "") +
+        (p.pagina ? '<a class="btn btn--ghost btn--block" href="' + esc(p.pagina) + '">Ver a página do produto</a>' : "") + "</div></div>";
       if (ficha.showModal) ficha.showModal(); else ficha.setAttribute("open", "");
     };
     lista.addEventListener("click", function(e){
@@ -324,6 +338,35 @@ var MR = {
         caixa.addEventListener("change", atualizar); atualizar();
       })
       .catch(function(){});
+  }
+
+  // Raio-X da fábrica: [data-raiox] com .rx-perg (uma por vez) e .rx-op[data-marca="id do serviço"]
+  var rx = document.querySelector("[data-raiox]");
+  if (rx) {
+    var pergs = rx.querySelectorAll(".rx-perg"), fimRx = rx.querySelector(".rx-fim"), nRx = rx.querySelector("[data-rx-n]");
+    var respostas = [], marcas = {};
+    var mostrar = function(i){
+      pergs.forEach(function(f, k){ f.hidden = k !== i; });
+      fimRx.hidden = i < pergs.length;
+      rx.querySelector(".rx-conta").hidden = i >= pergs.length;
+      rx.style.setProperty("--p", i / pergs.length);
+      if (nRx) nRx.textContent = Math.min(i + 1, pergs.length);
+    };
+    pergs.forEach(function(f, i){
+      f.addEventListener("click", function(e){
+        var b = e.target.closest(".rx-op"); if (!b) return;
+        respostas[i] = f.querySelector("legend").textContent + " " + b.textContent;
+        var m = b.getAttribute("data-marca"); if (m) marcas[m] = true;
+        if (i + 1 < pergs.length) { mostrar(i + 1); var prox = pergs[i + 1].querySelector(".rx-op"); if (prox) prox.focus({ preventScroll: true }); return; }
+        marcas.avaliacao = true;
+        rx.querySelectorAll(".rx-res li").forEach(function(li){ li.hidden = !marcas[li.getAttribute("data-id")]; });
+        var env = rx.querySelector("[data-rx-enviar]");
+        env.href = wa("Olá, Marcos! Fiz o Raio-X da fábrica no site e quero agendar uma visita.\n" + respostas.map(function(r){ return "• " + r; }).join("\n")); abrirFora(env);
+        mostrar(pergs.length);
+      });
+    });
+    rx.querySelector("[data-rx-refazer]").addEventListener("click", function(){ respostas = []; marcas = {}; mostrar(0); });
+    mostrar(0);
   }
 
   // Dúvidas: abre uma de cada vez
