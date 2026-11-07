@@ -17,7 +17,8 @@ body::before{content:"";position:absolute;inset:0;background:repeating-linear-gr
 
 .selo{flex:none;display:grid;place-items:center;width:150px;height:150px;border-radius:50%;border:2px solid #B08D57;background:radial-gradient(circle at 50% 35%,#244840,#16302B);box-shadow:0 0 0 10px rgba(176,141,87,.12),0 20px 50px rgba(0,0,0,.35)}
 .selo span{font-family:'Gloock',serif;font-size:66px;letter-spacing:-.05em;color:#D2B582;line-height:1;margin-top:6px}
-.empresa{margin-top:34px;font-family:'Gloock',serif;font-size:70px;line-height:1.02}
+.empresa{margin-top:34px;font-family:'Gloock',serif;font-size:72px;line-height:1.04}
+.empresa em{display:block;margin-top:6px;font-size:54px}
 .empresa em{font-style:normal;color:#D2B582}
 .nome{margin-top:20px;font-size:25px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#B9C4BF}
 
@@ -27,7 +28,7 @@ body::before{content:"";position:absolute;inset:0;background:repeating-linear-gr
 .orn b{width:12px;height:12px;transform:rotate(45deg);background:#B08D57}
 
 .tit{margin-top:34px;font-size:30px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#D2B582}
-.sub{margin-top:14px;font-family:'Gloock',serif;font-size:56px;line-height:1.08}
+.sub{margin-top:34px;font-family:'Gloock',serif;font-size:56px;line-height:1.08}
 
 .grade{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:20px;width:100%;margin-top:48px}
 .serv{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:28px 20px;border-radius:24px;text-align:center;
@@ -35,8 +36,11 @@ body::before{content:"";position:absolute;inset:0;background:repeating-linear-gr
 .ico{display:grid;place-items:center;width:84px;height:84px;border-radius:18px;background:rgba(176,141,87,.16);border:1px solid rgba(210,181,130,.4)}
 .ico svg{width:46px;height:46px;fill:none;stroke:#D2B582;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .serv b{font-size:31px;font-weight:600;line-height:1.18}
+.serv small{display:block;margin-top:6px;font-size:24px;font-weight:400;color:#B9C4BF}
+.insta{display:inline-flex;align-items:center;gap:14px;font-size:30px;font-weight:600;color:#F3EEE4}
+.insta svg{width:36px;height:36px;fill:none;stroke:#D2B582;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-.pe{margin-top:56px;display:flex;flex-direction:column;align-items:center;gap:26px}
+.pe{margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:24px}
 .exp{font-size:27px;color:#DDE3DE}
 .exp b{font-family:'Gloock',serif;font-weight:400;font-size:40px;color:#D2B582;margin-right:6px;vertical-align:-4px}
 .pill{display:inline-flex;align-items:center;gap:16px;padding:24px 46px;border-radius:999px;background:linear-gradient(180deg,#C9A66E,#B08D57);color:#16302B;font-size:34px;font-weight:700;box-shadow:0 14px 34px rgba(0,0,0,.3)}
@@ -45,17 +49,16 @@ body::before{content:"";position:absolute;inset:0;background:repeating-linear-gr
 <div class="moldura" aria-hidden="true"></div>
 <div class="in">
   <div class="selo"><span>MR</span></div>
-  <div class="empresa">MR Gestão<br>e <em>Assessoria</em></div>
+  <div class="empresa">M.R Consultoria<br><em>Industrial e Comercial</em></div>
   <div class="nome">Marcos Rodrigues</div>
 
   <div class="orn" aria-hidden="true"><i></i><b></b><i></i></div>
 
-  <div class="tit">Consultoria para fábricas</div>
   <div class="sub">Nossos serviços</div>
 
   <div class="grade">
-    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 9v12M15 15h6"/></svg></span><b>Layout<br>da fábrica</b></div>
-    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4M14 12h.01"/></svg></span><b>Modelagem,<br>consumo e custo</b></div>
+    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 9v12M15 15h6"/></svg></span><b>Layout<small>Disposição e adequação</small></b></div>
+    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4M14 12h.01"/></svg></span><b>Modelagem<small>Correção, consumo e custo</small></b></div>
     <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5"/></svg></span><b>Treinamento<br>de pessoal</b></div>
     <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><b>Formação<br>de liderança</b></div>
     <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M20 12 12 20 4 12V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></span><b>Indicação de<br>produtos e serviços</b></div>
@@ -65,6 +68,7 @@ body::before{content:"";position:absolute;inset:0;background:repeating-linear-gr
   <div class="pe">
     <div class="exp"><b>35+</b> anos de experiência · Nova Serrana, MG</div>
     <span class="pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>(37) 99147-4586</span>
+    <span class="insta"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".6" fill="#D2B582"/></svg>@marquinhosconsultoria</span>
   </div>
 </div>
 </body></html>
