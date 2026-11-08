@@ -20,7 +20,7 @@ Site da MR Gestão e Assessoria (Marcos Rodrigues). HTML, CSS e JavaScript sem b
 - `assets/og*.png`: imagens que aparecem ao compartilhar o link (uma por página).
 - Google (desde 25/10/2026): cada página tem a sua palavra no título (Consultoria: "Consultoria empresarial em Nova Serrana") e o endereço oficial (`canonical`). O Início tem o JSON-LD `ProfessionalService` (MR Gestão e Assessoria, Marcos como fundador, telefone, Nova Serrana, Instagram); a Consultoria, o `Service` e o caminho Início › Consultoria; Produtos, o caminho. `sitemap.xml` (atualize o `lastmod` ao mudar páginas; a imersão fica de fora por estar oculta), `robots.txt` e `404.html` (com `noindex`; para o Nginx usar, a configuração precisa de `error_page 404 /404.html;`). As perguntas frequentes da Consultoria só ganham o JSON-LD `FAQPage` quando o Marcos responder. O que fica fora do site: `docs/google.md`.
 - Story da consultoria (07/11/2026): cartão vertical 1080x1920 para o status do WhatsApp e os stories do Instagram, em `docs/story/story-consultoria.png`, feito de `docs/story/story.html` (como refazer, no comentário do arquivo).
-- Cartão impresso 15x20 cm (08/11/2026): mesmo visual do story, em `docs/story/cartao-15x20.pdf` (tamanho real, para a gráfica) e `docs/story/cartao-15x20.png` (300 dpi), feitos de `docs/story/impresso.html`.
+- Cartão impresso 20x15 cm, deitado (08/11/2026): mesmo visual do story, em `docs/story/cartao-20x15.pdf` (tamanho real, para a gráfica) e `docs/story/cartao-20x15.png` (300 dpi), feitos de `docs/story/impresso.html`.
 - `docs/`: documentação e modelo das imagens de compartilhamento. Não vai para a VPS.
 
 Repositório público: não coloque senhas, chaves ou dados de clientes aqui.
