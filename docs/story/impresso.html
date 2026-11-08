@@ -1,0 +1,75 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<!-- Cartão impresso 15x20 cm (em pé), mesmo visual do story. 1 px aqui = 0,1 mm (1500x2000).
+     Com o site rodando localmente (na raiz do repositório: python3 -m http.server), gere:
+     docs/story/cartao-15x20.pdf (tamanho real, texto em vetor) e docs/story/cartao-15x20.png (300 dpi, 1772x2362).
+     Os textos ficam a pelo menos 15 mm da borda, longe do corte. -->
+<link rel="stylesheet" href="/assets/fontes/fontes.css">
+<style>
+@page{size:15cm 20cm;margin:0}
+html,body{margin:0;width:1500px;height:2000px;overflow:hidden}
+*{box-sizing:border-box}
+body{position:relative;color:#F3EEE4;font-family:'Figtree',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;
+  background:radial-gradient(1300px 900px at 50% 4%,rgba(210,181,130,.16),transparent 62%),radial-gradient(1200px 800px at 50% 108%,rgba(91,43,54,.42),transparent 70%),linear-gradient(180deg,#183630,#10241F)}
+body::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(243,238,228,.018) 0 2px,transparent 2px 26px)}
+.moldura{position:absolute;inset:70px;border:3px solid rgba(210,181,130,.6);border-radius:44px}
+.moldura::after{content:"";position:absolute;inset:16px;border:1.5px solid rgba(210,181,130,.25);border-radius:32px}
+.in{position:absolute;inset:170px 170px 160px;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+.selo{flex:none;display:grid;place-items:center;width:180px;height:180px;border-radius:50%;border:3px solid #B08D57;background:radial-gradient(circle at 50% 35%,#244840,#16302B);box-shadow:0 0 0 12px rgba(176,141,87,.12)}
+.selo span{font-family:'Gloock',serif;font-size:80px;letter-spacing:-.05em;color:#D2B582;line-height:1;margin-top:8px}
+.empresa{margin-top:40px;font-family:'Gloock',serif;font-size:104px;line-height:1.02}
+.empresa em{display:block;margin-top:8px;font-size:76px;font-style:normal;color:#D2B582}
+.nome{margin-top:26px;font-size:34px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#B9C4BF}
+
+.orn{display:flex;align-items:center;gap:22px;margin-top:46px}
+.orn i{display:block;width:170px;height:1.5px;background:linear-gradient(90deg,transparent,#B08D57)}
+.orn i:last-child{transform:scaleX(-1)}
+.orn b{width:15px;height:15px;transform:rotate(45deg);background:#B08D57}
+
+.sub{margin-top:40px;font-family:'Gloock',serif;font-size:76px;line-height:1.08}
+
+.grade{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:26px;width:100%;margin-top:56px}
+.serv{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:24px;padding:46px 14px 40px;border-radius:30px;
+  background:linear-gradient(160deg,rgba(243,238,228,.08),rgba(243,238,228,.03));border:1.5px solid rgba(210,181,130,.32)}
+.ico{display:grid;place-items:center;width:104px;height:104px;border-radius:24px;background:rgba(176,141,87,.16);border:1.5px solid rgba(210,181,130,.45)}
+.ico svg{width:56px;height:56px;fill:none;stroke:#D2B582;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.serv b{font-size:35px;white-space:nowrap;font-weight:600;line-height:1.18}
+.serv small{display:block;margin-top:8px;font-size:28px;font-weight:400;color:#B9C4BF;line-height:1.25}
+
+.pe{margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:30px}
+.exp{font-size:36px;color:#DDE3DE}
+.exp b{font-family:'Gloock',serif;font-weight:400;font-size:54px;color:#D2B582;margin-right:8px;vertical-align:-5px}
+.contatos{display:flex;align-items:center;gap:44px}
+.pill{display:inline-flex;align-items:center;gap:18px;padding:26px 50px;border-radius:999px;background:linear-gradient(180deg,#C9A66E,#B08D57);color:#16302B;font-size:44px;font-weight:700}
+.pill svg{width:48px;height:48px}
+.insta{display:inline-flex;align-items:center;gap:16px;font-size:40px;font-weight:600}
+.insta svg{width:46px;height:46px;fill:none;stroke:#D2B582;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+</style></head><body>
+<div class="moldura" aria-hidden="true"></div>
+<div class="in">
+  <div class="selo"><span>MR</span></div>
+  <div class="empresa">M.R Consultoria<em>Industrial e Comercial</em></div>
+  <div class="nome">Marcos Rodrigues</div>
+
+  <div class="orn" aria-hidden="true"><i></i><b></b><i></i></div>
+
+  <div class="sub">Nossos serviços</div>
+
+  <div class="grade">
+    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 9v12M15 15h6"/></svg></span><b>Layout<small>Disposição<br>e adequação</small></b></div>
+    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4M14 12h.01"/></svg></span><b>Modelagem<small>Correção,<br>consumo e custo</small></b></div>
+    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5"/></svg></span><b>Treinamento<br>de pessoal</b></div>
+    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><b>Formação<br>de liderança</b></div>
+    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M20 12 12 20 4 12V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></span><b>Indicação de<br>produtos e serviços</b></div>
+    <div class="serv"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg></span><b>Avaliação<br>de resultados</b></div>
+  </div>
+
+  <div class="pe">
+    <div class="exp"><b>35+</b> anos de experiência · Nova Serrana, MG</div>
+    <div class="contatos">
+      <span class="pill"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>(37) 99147-4586</span>
+      <span class="insta"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".6" fill="#D2B582"/></svg>@marquinhosconsultoria</span>
+    </div>
+  </div>
+</div>
+</body></html>
