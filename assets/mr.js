@@ -2,13 +2,8 @@
 
 /* ===== CONFIGURAÇÃO ===== */
 var MR = {
-  WHATSAPP: "5537991474586",
-  // Links de pagamento da Eduzz. Enquanto estiverem vazios, os botões abrem o WhatsApp.
-  CHECKOUT_INDIVIDUAL: "",   // produto "Imersão Gestão e Liderança · Individual" (R$ 790)
-  CHECKOUT_GRUPO: "",        // produto "Imersão Gestão e Liderança · Grupo" (R$ 740 por pessoa, 2 ou mais)
-  INICIO: "2026-11-28T07:00:00-03:00"
+  WHATSAPP: "5537991474586"
 };
-// As vagas ficam em /assets/vagas.json ({"total": 80, "vendidas": 0}).
 // Os produtos do catálogo ficam em /assets/produtos.json (como preencher: docs/catalogo.md).
 // Os serviços (pacotes) da consultoria ficam em /assets/consultoria.json (como preencher: docs/consultoria.md).
 // Com ?rascunho no endereço, a página mostra as partes ainda em montagem e o catálogo de exemplo.
@@ -20,49 +15,6 @@ var MR = {
 
   // WhatsApp: [data-wa="mensagem"]
   document.querySelectorAll("[data-wa]").forEach(function(a){ a.href = wa(a.getAttribute("data-wa")); abrirFora(a); });
-
-  // Inscrição pela Eduzz: [data-checkout="individual" | "grupo"]
-  var checkout = {
-    individual: [MR.CHECKOUT_INDIVIDUAL, "Olá! Quero garantir minha vaga na Imersão Gestão e Liderança do dia 28/11 (individual, R$ 790)."],
-    grupo: [MR.CHECKOUT_GRUPO, "Olá! Quero inscrever um grupo na Imersão Gestão e Liderança do dia 28/11 (R$ 740 por pessoa). Seremos __ pessoas."]
-  };
-  var ligarCheckout = function(){
-    document.querySelectorAll("[data-checkout]").forEach(function(a){
-      var c = checkout[a.getAttribute("data-checkout")]; if (!c) return;
-      a.href = c[0] || wa(c[1]); abrirFora(a);
-    });
-  };
-  ligarCheckout();
-
-  // Vagas: [data-vagas] mostra quantas restam; [data-vagas-bar] mostra a barra
-  var mostrarVagas = function(v){
-    var total = +v.total || 0, restam = Math.max(0, total - (+v.vendidas || 0));
-    document.querySelectorAll("[data-vagas]").forEach(function(el){
-      el.textContent = restam === 0 ? "Vagas esgotadas" : restam === 1 ? "Resta 1 vaga" : "Restam " + restam + " de " + total + " vagas";
-    });
-    document.querySelectorAll("[data-vagas-bar]").forEach(function(el){ el.style.setProperty("--p", total ? (restam / total) : 0); });
-    if (restam === 0) {
-      document.documentElement.classList.add("esgotado");
-      document.querySelectorAll("[data-checkout]").forEach(function(a){
-        a.href = wa("Olá! As vagas da Imersão Gestão e Liderança esgotaram. Quero entrar na lista de espera."); abrirFora(a);
-        var t = a.querySelector("[data-txt]") || a; if (t.childNodes.length) t.firstChild.textContent = "Entrar na lista de espera ";
-      });
-    }
-  };
-  if (document.querySelector("[data-vagas],[data-vagas-bar]") && window.fetch) {
-    fetch("/assets/vagas.json", { cache: "no-store" }).then(function(r){ return r.json(); }).then(mostrarVagas).catch(function(){});
-  }
-
-  // Contagem regressiva: [data-count] com [data-d] [data-h] [data-m]; [data-dias] escreve "Faltam N dias"
-  var fim = new Date(MR.INICIO).getTime();
-  var dois = function(x){ return x < 10 ? "0" + x : "" + x; };
-  var tique = function(){
-    var m = Math.max(0, Math.floor((fim - Date.now()) / 60000));
-    var v = { d: Math.floor(m / 1440), h: dois(Math.floor(m % 1440 / 60)), m: dois(m % 60) };
-    document.querySelectorAll("[data-count]").forEach(function(c){ ["d","h","m"].forEach(function(k){ var el = c.querySelector("[data-" + k + "]"); if (el) el.textContent = v[k]; }); });
-    document.querySelectorAll("[data-dias]").forEach(function(el){ el.textContent = v.d === 1 ? "Falta 1 dia" : "Faltam " + v.d + " dias"; });
-  };
-  tique(); setInterval(tique, 15000);
 
   // Barra de navegação: fundo ao rolar e menu do celular
   var top = document.querySelector(".top"), btn = document.querySelector(".menu-btn"), menu = document.getElementById("menu");
